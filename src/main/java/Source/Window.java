@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import javax.swing.RowFilter;
@@ -20,7 +21,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author tanuj
+ * @author Tanuj & Shravan
  */
 public class Window extends javax.swing.JFrame {
 
@@ -62,11 +63,17 @@ public class Window extends javax.swing.JFrame {
         Fees_opt = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         Main_panel = new javax.swing.JPanel();
+        Home = new javax.swing.JPanel();
+        kGradientPanel2 = new keeptoo.KGradientPanel();
+        jPanel1 = new javax.swing.JPanel();
+        Time = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         Students = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Stud_table = new javax.swing.JTable();
-        class_list1 = new javax.swing.JComboBox<>();
+        class_list = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         Grid_search = new javax.swing.JTextField();
@@ -79,10 +86,6 @@ public class Window extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        Home = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        kGradientPanel2 = new keeptoo.KGradientPanel();
         Fees = new javax.swing.JPanel();
         ID = new javax.swing.JPanel();
 
@@ -211,9 +214,35 @@ public class Window extends javax.swing.JFrame {
 
         SideBar.add(Fees_opt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 200, 50));
 
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/logo-removebg-preview (1).jpg"))); // NOI18N
+        jLabel10.setText("jLabel10");
+        SideBar.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 150));
+
         getContentPane().add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 550));
 
         Main_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Home.setMinimumSize(new java.awt.Dimension(900, 500));
+        Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        kGradientPanel2.setkEndColor(new java.awt.Color(65, 65, 65));
+        kGradientPanel2.setkGradientFocus(100);
+        kGradientPanel2.setkStartColor(new java.awt.Color(0, 0, 0));
+        kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        kGradientPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 180, 180));
+
+        Time.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        kGradientPanel2.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel16.setText("Hello,");
+        kGradientPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        Home.add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
+
+        Main_panel.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
 
         Students.setBackground(new java.awt.Color(204, 204, 204));
         Students.setForeground(new java.awt.Color(204, 204, 204));
@@ -251,16 +280,16 @@ public class Window extends javax.swing.JFrame {
 
         Students.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 700, -1));
 
-        class_list1.setBackground(new java.awt.Color(242, 242, 242));
-        class_list1.setForeground(new java.awt.Color(0, 0, 0));
-        class_list1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select the Class", "Class 1", "Class 2", "Class 3", "Class 4" }));
-        class_list1.setBorder(null);
-        class_list1.addActionListener(new java.awt.event.ActionListener() {
+        class_list.setBackground(new java.awt.Color(242, 242, 242));
+        class_list.setForeground(new java.awt.Color(0, 0, 0));
+        class_list.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select the Class", "Class 8", "Class 9", "Class 10", " " }));
+        class_list.setBorder(null);
+        class_list.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                class_list1ActionPerformed(evt);
+                class_listActionPerformed(evt);
             }
         });
-        Students.add(class_list1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 180, -1));
+        Students.add(class_list, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 180, -1));
 
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Class :");
@@ -346,24 +375,10 @@ public class Window extends javax.swing.JFrame {
 
         Main_panel.add(Students, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
 
-        Home.setMinimumSize(new java.awt.Dimension(900, 500));
-        Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel16.setText("Hello,");
-        Home.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Home.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 180, 180));
-
-        kGradientPanel2.setkEndColor(new java.awt.Color(142, 140, 240));
-        kGradientPanel2.setkGradientFocus(100);
-        kGradientPanel2.setkStartColor(new java.awt.Color(224, 195, 252));
-        kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Home.add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
-
-        Main_panel.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
+        Fees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         Main_panel.add(Fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
+
+        ID.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         Main_panel.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
 
         getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 700, 550));
@@ -446,14 +461,27 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_Home_optMouseClicked
 
     private void Logout_optMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Logout_optMouseClicked
-        // TODO add your handling code here:
        int input = JOptionPane.showConfirmDialog(null, "Do you want to logout", "Logout?", WIDTH, HEIGHT);
        if(input==0){
            this.dispose();
-           
+        new Login_Page().setVisible(true);
        }
     }//GEN-LAST:event_Logout_optMouseClicked
+    
+    private void getTime(){
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
 
+        if(timeOfDay >= 0 && timeOfDay < 12){
+            Time.setText("Good Morning");     
+        }else if(timeOfDay >= 12 && timeOfDay < 16){
+            Time.setText("Good Afternoon");   
+        }else if(timeOfDay >= 16 && timeOfDay < 21){
+            Time.setText("Good Evening");
+        }else if(timeOfDay >= 21 && timeOfDay < 24){
+            Time.setText("Good Night");
+        }
+    }
     private void Fees_optMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Fees_optMouseClicked
         Fees_opt.setBackground(new java.awt.Color(66, 66, 66));
         Home_opt.setBackground(new java.awt.Color(33,33,33));
@@ -467,19 +495,57 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_Fees_optMouseClicked
 
     private void Fees_optKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Fees_optKeyPressed
-        // TODO add your handling code here:
     }//GEN-LAST:event_Fees_optKeyPressed
 
-    private void class_list1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_list1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_class_list1ActionPerformed
+    private void class_listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_listActionPerformed
+            String value = class_list.getSelectedItem().toString();
+          System.out.println(value);
+          if("Class 9".equals(value)){
+             try{
+                  
+                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+                    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select * from class_8";
+                    ResultSet rs = st.executeQuery(sql);
+                    Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
+                   con.close();
+              }catch(Exception e){
+                  e.printStackTrace();
+              }
+          }
+          else if("Class 9".equals(value)){
+              try{
+                 
+                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+                    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select * from class_9";
+                    ResultSet rs = st.executeQuery(sql);
+                    Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
+                   con.close();
+              }catch(Exception e){
+                  e.printStackTrace();
+              }
+          }else if("Class 10".equals(value)){
+              try{
+                  
+                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+                    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select * from class_10";
+                    ResultSet rs = st.executeQuery(sql);
+                    Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
+                    con.close();
+              }catch(Exception e){
+                  e.printStackTrace();
+              }
+          }
+    }//GEN-LAST:event_class_listActionPerformed
 
     private void Grid_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Grid_searchActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_Grid_searchActionPerformed
 
     private void Grid_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Grid_searchKeyPressed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_Grid_searchKeyPressed
 
     private void Grid_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Grid_searchKeyReleased
@@ -487,11 +553,50 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_Grid_searchKeyReleased
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+         String value = class_list.getSelectedItem().toString();
+          System.out.println(value);
+          if("Class 8".equals(value)){
+             try{
+                  
+                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+                    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select * from class_8";
+                    ResultSet rs = st.executeQuery(sql);
+                    Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
+                   con.close();
+              }catch(Exception e){
+                  e.printStackTrace();
+              }
+          }
+          else if("Class 9".equals(value)){
+              try{
+                 
+                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+                    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select * from class_9";
+                    ResultSet rs = st.executeQuery(sql);
+                    Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
+                   con.close();
+              }catch(Exception e){
+                  e.printStackTrace();
+              }
+          }else if("Class 10".equals(value)){
+              try{
+                  
+                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+                    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select * from class_10";
+                    ResultSet rs = st.executeQuery(sql);
+                    Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
+                    con.close();
+              }catch(Exception e){
+                  e.printStackTrace();
+              }
+          }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -499,7 +604,6 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        this.setEnabled(false);
         new Student_Form().setVisible(true);
     }//GEN-LAST:event_jButton5MouseClicked
 
@@ -511,12 +615,15 @@ public class Window extends javax.swing.JFrame {
         FlatDarkLaf.setup();
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new Window().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Window().setVisible(true);
+            }
         });
        
        
-        
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -533,12 +640,14 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTable Stud_table;
     private javax.swing.JPanel Student_opt;
     private javax.swing.JPanel Students;
-    private javax.swing.JComboBox<String> class_list1;
+    private javax.swing.JLabel Time;
+    private javax.swing.JComboBox<String> class_list;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
