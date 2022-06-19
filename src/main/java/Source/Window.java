@@ -3,8 +3,11 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import javax.swing.RowFilter;
@@ -29,13 +32,27 @@ public class Window extends javax.swing.JFrame {
         static final String User = "root"; //Database Username
         static final String Pass = "";  //Database Password
         DefaultTableModel dm;
-        
-       
+        Connection con;
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
     /**
      * Creates new form Window
      */
     public Window() {
         initComponents();
+        if(timeOfDay >= 0 && timeOfDay < 12){
+            Time.setText("Good Morning");     
+        }else if(timeOfDay >= 12 && timeOfDay < 16){
+            Time.setText("Good Afternoon");   
+        }else if(timeOfDay >= 16 && timeOfDay < 21){
+            Time.setText("Good Evening");
+        }else if(timeOfDay >= 21 && timeOfDay < 24){
+            Time.setText("Good Night");
+        }
+            Students.setVisible(false);
+            Fees.setVisible(false);
+            ID.setVisible(false);
+            Home.setVisible(true);
     }
 
     /**
@@ -65,6 +82,28 @@ public class Window extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         Main_panel = new javax.swing.JPanel();
+        ID = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        IdentityCard = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        Blood1 = new javax.swing.JLabel();
+        Name1 = new javax.swing.JLabel();
+        Birthdate1 = new javax.swing.JLabel();
+        Phone1 = new javax.swing.JLabel();
+        Class1 = new javax.swing.JLabel();
+        IDImage = new javax.swing.JLabel();
+        Class = new javax.swing.JComboBox<>();
+        Student = new javax.swing.JComboBox<>();
+        Choose = new javax.swing.JButton();
+        Generate = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         Home = new javax.swing.JPanel();
         kGradientPanel2 = new keeptoo.KGradientPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -87,7 +126,6 @@ public class Window extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         Fees = new javax.swing.JPanel();
-        ID = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informix School Management System");
@@ -178,8 +216,8 @@ public class Window extends javax.swing.JFrame {
         });
         ID_opt.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/planner_40px.png"))); // NOI18N
-        ID_opt.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 5, 40, 40));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/name_tag_50px.png"))); // NOI18N
+        ID_opt.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5, 50, 50));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -203,8 +241,8 @@ public class Window extends javax.swing.JFrame {
         });
         Fees_opt.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/planner_40px.png"))); // NOI18N
-        Fees_opt.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 5, 40, 40));
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/bill_50px.png"))); // NOI18N
+        Fees_opt.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5, 50, 50));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,6 +259,90 @@ public class Window extends javax.swing.JFrame {
         getContentPane().add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 550));
 
         Main_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ID.setBackground(new java.awt.Color(23, 23, 23));
+        ID.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setText("Select the Student");
+        ID.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        ID.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 680, 10));
+
+        jPanel2.setBackground(new java.awt.Color(215, 35, 35));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Identity Card");
+        jPanel2.add(jLabel9);
+
+        ID.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 40));
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        IdentityCard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        IdentityCard.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 76, 160, 160));
+
+        Blood1.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
+        Blood1.setForeground(new java.awt.Color(51, 51, 51));
+        Blood1.setText("Blood ");
+        IdentityCard.add(Blood1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
+
+        Name1.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
+        Name1.setForeground(new java.awt.Color(51, 51, 51));
+        Name1.setText("Name ");
+        IdentityCard.add(Name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 153, -1, -1));
+
+        Birthdate1.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
+        Birthdate1.setForeground(new java.awt.Color(51, 51, 51));
+        Birthdate1.setText("Date ");
+        IdentityCard.add(Birthdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 195, -1, -1));
+
+        Phone1.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
+        Phone1.setForeground(new java.awt.Color(51, 51, 51));
+        Phone1.setText("Number ");
+        IdentityCard.add(Phone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
+
+        Class1.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
+        Class1.setForeground(new java.awt.Color(51, 51, 51));
+        Class1.setText("Class ");
+        IdentityCard.add(Class1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 70, -1));
+
+        IDImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/Identity Card.png"))); // NOI18N
+        IdentityCard.add(IDImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel3.add(IdentityCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 592, 340));
+
+        ID.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 700, 400));
+
+        Class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select the Class", "Class 8", "Class 9", "Class 10" }));
+        Class.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClassActionPerformed(evt);
+            }
+        });
+        ID.add(Class, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+
+        ID.add(Student, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 100, -1));
+
+        Choose.setText("Choose");
+        ID.add(Choose, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, -1, -1));
+
+        Generate.setText("Generate");
+        ID.add(Generate, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
+
+        jLabel13.setText("Class :");
+        ID.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 103, -1, -1));
+
+        jLabel22.setText("Student :");
+        ID.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 103, -1, -1));
+
+        jLabel23.setText("Student's Photo :");
+        ID.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 103, -1, -1));
+
+        jLabel24.setText(" Generate ID Card :");
+        ID.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 103, -1, -1));
+
+        Main_panel.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
 
         Home.setMinimumSize(new java.awt.Dimension(900, 500));
         Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -378,9 +500,6 @@ public class Window extends javax.swing.JFrame {
         Fees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         Main_panel.add(Fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
 
-        ID.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Main_panel.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
-
         getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 700, 550));
 
         getAccessibleContext().setAccessibleParent(this);
@@ -469,18 +588,8 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_Logout_optMouseClicked
     
     private void getTime(){
-        Calendar c = Calendar.getInstance();
-        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
-
-        if(timeOfDay >= 0 && timeOfDay < 12){
-            Time.setText("Good Morning");     
-        }else if(timeOfDay >= 12 && timeOfDay < 16){
-            Time.setText("Good Afternoon");   
-        }else if(timeOfDay >= 16 && timeOfDay < 21){
-            Time.setText("Good Evening");
-        }else if(timeOfDay >= 21 && timeOfDay < 24){
-            Time.setText("Good Night");
-        }
+        
+        
     }
     private void Fees_optMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Fees_optMouseClicked
         Fees_opt.setBackground(new java.awt.Color(66, 66, 66));
@@ -607,6 +716,51 @@ public class Window extends javax.swing.JFrame {
         new Student_Form().setVisible(true);
     }//GEN-LAST:event_jButton5MouseClicked
 
+    private void ClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClassActionPerformed
+       String value1 = Class.getSelectedItem().toString();
+       if(value1.equals("Class 8")){
+           try {
+               con = DriverManager.getConnection(DB_URL,User,Pass);
+               Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select Name from class_8";
+                    ResultSet rs = st.executeQuery(sql);
+                    while(rs.next()){
+                    String name2 = rs.getString("Name");
+                    Student.addItem(name2);
+                    }
+           } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+           } 
+       }
+       if(value1.equals("Class 9")){
+           try {
+               con = DriverManager.getConnection(DB_URL,User,Pass);
+               Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select Name from class_9";
+                    ResultSet rs = st.executeQuery(sql);
+                    while(rs.next()){
+                    String name2 = rs.getString("Name");
+                    Student.addItem(name2);
+                    }
+           } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+           }           
+       }
+       if(value1.equals("Class 10")){
+       try {
+               con = DriverManager.getConnection(DB_URL,User,Pass);
+               Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select Name from class_10";
+                    ResultSet rs = st.executeQuery(sql);
+                    while(rs.next()){
+                    String name2 = rs.getString("Name");
+                    Student.addItem(name2);
+                    }
+           } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+           } }
+    }//GEN-LAST:event_ClassActionPerformed
+
    
     /**
      * @param args the command line arguments
@@ -627,17 +781,28 @@ public class Window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Birthdate1;
+    private javax.swing.JLabel Blood1;
+    private javax.swing.JButton Choose;
+    private javax.swing.JComboBox<String> Class;
+    private javax.swing.JLabel Class1;
     private javax.swing.JPanel Fees;
     private javax.swing.JPanel Fees_opt;
+    private javax.swing.JButton Generate;
     private javax.swing.JTextField Grid_search;
     private javax.swing.JPanel Home;
     private javax.swing.JPanel Home_opt;
     private javax.swing.JPanel ID;
+    private javax.swing.JLabel IDImage;
     private javax.swing.JPanel ID_opt;
+    private javax.swing.JPanel IdentityCard;
     private javax.swing.JPanel Logout_opt;
     private javax.swing.JPanel Main_panel;
+    private javax.swing.JLabel Name1;
+    private javax.swing.JLabel Phone1;
     private javax.swing.JPanel SideBar;
     private javax.swing.JTable Stud_table;
+    private javax.swing.JComboBox<String> Student;
     private javax.swing.JPanel Student_opt;
     private javax.swing.JPanel Students;
     private javax.swing.JLabel Time;
@@ -648,6 +813,9 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -657,15 +825,22 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private keeptoo.KGradientPanel kGradientPanel2;
     // End of variables declaration//GEN-END:variables

@@ -270,6 +270,7 @@ public class Student_Form extends javax.swing.JFrame {
             String FName = F_Name.getText();
             String MName = M_Name.getText();
             String LName = L_Name.getText();
+            String Name = F_Name+" "+M_Name+" "+L_Name;
             LocalDate date = datePicker1.getDate();
             String dob = "";
             String Gen = Gender.getSelectedItem().toString();
@@ -293,18 +294,16 @@ public class Student_Form extends javax.swing.JFrame {
                         try {
                             con = DriverManager.getConnection(DB_URL,User,Pass);
                             //Inserting into table
-                            ps = con.prepareStatement("insert into Class_8(FName, MName, LName, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup) " + "values (?,?,?,?,?,?,?,?,?,?,?");
-                            ps.setString(1,FName); //First Namae
-                            ps.setString(2,MName); //Middle Name
-                            ps.setString(3,LName); //Last Name
-                            ps.setString(4, dob);// Date-of-Birth
-                            ps.setString(5, Gen);// Gender
-                            ps.setString(6, Dad);// Father's Name
-                            ps.setString(7, Mom);// Mother's Name
-                            ps.setString(8, Phone);// Parent's Phone Number
-                            ps.setString(9, Addh);// Aadhar Number
-                            ps.setString(10, Addr);// Address
-                            ps.setString(11, BloodG);// Blood Group
+                            ps = con.prepareStatement("insert into Class_8(Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup) " + "values (?,?,?,?,?,?,?,?,?");
+                            ps.setString(1,Name); //Name
+                            ps.setString(2, dob);// Date-of-Birth
+                            ps.setString(3, Gen);// Gender
+                            ps.setString(4, Dad);// Father's Name
+                            ps.setString(5, Mom);// Mother's Name
+                            ps.setString(6, Phone);// Parent's Phone Number
+                            ps.setString(7, Addh);// Aadhar Number
+                            ps.setString(8, Addr);// Address
+                            ps.setString(9, BloodG);// Blood Group
                             //Executing the statement
                             ps.executeUpdate(); // Update the table
                         JOptionPane.showMessageDialog(null,"Student successfully Added");
@@ -317,18 +316,16 @@ public class Student_Form extends javax.swing.JFrame {
                         try {
                             con = DriverManager.getConnection(DB_URL,User,Pass);
                             //Inserting into table
-                            ps = con.prepareStatement("insert into Class_9(FName, MName, LName, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup) " + "values (?,?,?,?,?,?,?,?,?,?,?");
-                            ps.setString(1,FName); //First Namae
-                            ps.setString(2,MName); //Middle Name
-                            ps.setString(3,LName); //Last Name
-                            ps.setString(4, dob);// Date-of-Birth
-                            ps.setString(5, Gen);// Gender
-                            ps.setString(6, Dad);// Father's Name
-                            ps.setString(7, Mom);// Mother's Name
-                            ps.setString(8, Phone);// Parent's Phone Number
-                            ps.setString(9, Addh);// Aadhar Number
-                            ps.setString(10, Addr);// Address
-                            ps.setString(11, BloodG);// Blood Group
+                            ps = con.prepareStatement("insert into Class_9(Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup) " + "values (?,?,?,?,?,?,?,?,?");
+                            ps.setString(1,Name); //Name
+                            ps.setString(2, dob);// Date-of-Birth
+                            ps.setString(3, Gen);// Gender
+                            ps.setString(4, Dad);// Father's Name
+                            ps.setString(5, Mom);// Mother's Name
+                            ps.setString(6, Phone);// Parent's Phone Number
+                            ps.setString(7, Addh);// Aadhar Number
+                            ps.setString(8, Addr);// Address
+                            ps.setString(9, BloodG);// Blood Group
                             //Executing the statement
                             ps.executeUpdate(); // Update the table
                         JOptionPane.showMessageDialog(null,"Student successfully Added");
@@ -340,18 +337,16 @@ public class Student_Form extends javax.swing.JFrame {
                         try {
                             con = DriverManager.getConnection(DB_URL,User,Pass);
                             //Inserting into table
-                            ps = con.prepareStatement("insert into Class_10(FName, MName, LName, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup) " + "values (?,?,?,?,?,?,?,?,?,?,?");
-                            ps.setString(1,FName); //First Namae
-                            ps.setString(2,MName); //Middle Name
-                            ps.setString(3,LName); //Last Name
-                            ps.setString(4, dob);// Date-of-Birth
-                            ps.setString(5, Gen);// Gender
-                            ps.setString(6, Dad);// Father's Name
-                            ps.setString(7, Mom);// Mother's Name
-                            ps.setString(8, Phone);// Parent's Phone Number
-                            ps.setString(9, Addh);// Aadhar Number
-                            ps.setString(10, Addr);// Address
-                            ps.setString(11, BloodG);// Blood Group
+                            ps = con.prepareStatement("insert into Class_10(Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup) " + "values (?,?,?,?,?,?,?,?,?");
+                            ps.setString(1,Name); //Name
+                            ps.setString(2, dob);// Date-of-Birth
+                            ps.setString(3, Gen);// Gender
+                            ps.setString(4, Dad);// Father's Name
+                            ps.setString(5, Mom);// Mother's Name
+                            ps.setString(6, Phone);// Parent's Phone Number
+                            ps.setString(7, Addh);// Aadhar Number
+                            ps.setString(8, Addr);// Address
+                            ps.setString(9, BloodG);// Blood Group
                             //Executing the statement
                             ps.executeUpdate(); // Update the table
                         JOptionPane.showMessageDialog(null,"Student successfully Added");
