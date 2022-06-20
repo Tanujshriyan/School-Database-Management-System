@@ -50,9 +50,6 @@ public class Student_Form extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        F_Name = new javax.swing.JTextField();
-        L_Name = new javax.swing.JTextField();
-        M_Name = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -77,6 +74,9 @@ public class Student_Form extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         Blood = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
+        F_Name = new javax.swing.JTextField();
+        M_Name = new javax.swing.JTextField();
+        L_Name = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -97,16 +97,6 @@ public class Student_Form extends javax.swing.JFrame {
         jLabel3.setText("Aadhar Card Number");
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 150, -1));
-
-        F_Name.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        F_Name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                F_NameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(F_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 135, 95, -1));
-        jPanel1.add(L_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 135, 95, -1));
-        jPanel1.add(M_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 135, 95, -1));
 
         jLabel4.setText("First Name");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 163, -1, -1));
@@ -214,6 +204,9 @@ public class Student_Form extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Blood Group");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 100, -1));
+        jPanel1.add(F_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 140, 90, -1));
+        jPanel1.add(M_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 140, 90, -1));
+        jPanel1.add(L_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 90, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 0, 450, 640));
 
@@ -226,10 +219,6 @@ public class Student_Form extends javax.swing.JFrame {
 
     private void GenderItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GenderItemStateChanged
     }//GEN-LAST:event_GenderItemStateChanged
-
-    private void F_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_NameActionPerformed
-
-    }//GEN-LAST:event_F_NameActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         this.dispose();
@@ -267,12 +256,8 @@ public class Student_Form extends javax.swing.JFrame {
     
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
         // Textbox inputs transferred to variables    
-            String FName = F_Name.getText();
-            String MName = M_Name.getText();
-            String LName = L_Name.getText();
-            String Name = F_Name+" "+M_Name+" "+L_Name;
+            String Name = F_Name.getText() +" "+M_Name.getText()+" "+L_Name.getText();
             LocalDate date = datePicker1.getDate();
-            String dob = "";
             String Gen = Gender.getSelectedItem().toString();
             String Phone = PPhone.getText();
             String Dad = Father.getText();
@@ -281,84 +266,88 @@ public class Student_Form extends javax.swing.JFrame {
             String Addr = Address.getText();
             String Clas = Class.getSelectedItem().toString();
             String BloodG = Blood.getSelectedItem().toString();
+                                System.out.println(Name);
+                                System.out.println(F_Name.getText());
+                                System.out.println(M_Name.getText());
+                                System.out.println(L_Name.getText());
         // Checks if any value is empty   
-            if(FName.equals("") || MName.equals("") || LName.equals("") || date == null  || Gen.equals("") || Phone.equals("") || 
+            if(F_Name.equals("") || M_Name.equals("") || L_Name.equals("") || date == null  || Gen.equals("") || Phone.equals("") || 
                     Dad.equals("") || Mom.equals("") || Addh.equals("") || Addr.equals("") || Clas.equals("") || BloodG.equals("")){
                 // Shows a error message 
                 JOptionPane.showMessageDialog(null,"Some informations are missing","Error",JOptionPane.ERROR_MESSAGE);
             }else{// IF all values are entered
-                if(validateNumber(Phone)||validateAadhar(Addh)){
-                    dob = date.toString();
-                    if(Clas.equals("Class 8")){
-                        
-                        try {
-                            con = DriverManager.getConnection(DB_URL,User,Pass);
-                            //Inserting into table
-                            ps = con.prepareStatement("insert into Class_8(Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup) " + "values (?,?,?,?,?,?,?,?,?");
-                            ps.setString(1,Name); //Name
-                            ps.setString(2, dob);// Date-of-Birth
-                            ps.setString(3, Gen);// Gender
-                            ps.setString(4, Dad);// Father's Name
-                            ps.setString(5, Mom);// Mother's Name
-                            ps.setString(6, Phone);// Parent's Phone Number
-                            ps.setString(7, Addh);// Aadhar Number
-                            ps.setString(8, Addr);// Address
-                            ps.setString(9, BloodG);// Blood Group
-                            //Executing the statement
-                            ps.executeUpdate(); // Update the table
-                        JOptionPane.showMessageDialog(null,"Student successfully Added");
-                        dispose();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                       
-                    }else if(Clas.equals("Class 9")){
-                        try {
-                            con = DriverManager.getConnection(DB_URL,User,Pass);
-                            //Inserting into table
-                            ps = con.prepareStatement("insert into Class_9(Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup) " + "values (?,?,?,?,?,?,?,?,?");
-                            ps.setString(1,Name); //Name
-                            ps.setString(2, dob);// Date-of-Birth
-                            ps.setString(3, Gen);// Gender
-                            ps.setString(4, Dad);// Father's Name
-                            ps.setString(5, Mom);// Mother's Name
-                            ps.setString(6, Phone);// Parent's Phone Number
-                            ps.setString(7, Addh);// Aadhar Number
-                            ps.setString(8, Addr);// Address
-                            ps.setString(9, BloodG);// Blood Group
-                            //Executing the statement
-                            ps.executeUpdate(); // Update the table
-                        JOptionPane.showMessageDialog(null,"Student successfully Added");
-                        dispose();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }else if(Clas.equals("Class 10")){
-                        try {
-                            con = DriverManager.getConnection(DB_URL,User,Pass);
-                            //Inserting into table
-                            ps = con.prepareStatement("insert into Class_10(Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup) " + "values (?,?,?,?,?,?,?,?,?");
-                            ps.setString(1,Name); //Name
-                            ps.setString(2, dob);// Date-of-Birth
-                            ps.setString(3, Gen);// Gender
-                            ps.setString(4, Dad);// Father's Name
-                            ps.setString(5, Mom);// Mother's Name
-                            ps.setString(6, Phone);// Parent's Phone Number
-                            ps.setString(7, Addh);// Aadhar Number
-                            ps.setString(8, Addr);// Address
-                            ps.setString(9, BloodG);// Blood Group
-                            //Executing the statement
-                            ps.executeUpdate(); // Update the table
-                        JOptionPane.showMessageDialog(null,"Student successfully Added");
-                        dispose();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                }else{
-                    JOptionPane.showMessageDialog(null,"Phone Number or Aadhar Number isn't valid","Error",JOptionPane.ERROR_MESSAGE);
-                }
+                    String dob = date.toString();
+                    switch (Clas) {
+                        case "Class 8":
+                            try {
+                                
+                                con = DriverManager.getConnection(DB_URL,User,Pass);
+                                //Inserting into table
+                                ps = con.prepareStatement("insert into class_8(Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup)" + "values (?,?,?,?,?,?,?,?,?)");
+                                ps.setString(1, Name); //Name
+                                ps.setString(2, dob);// Date-of-Birth
+                                ps.setString(3, Gen);// Gender
+                                ps.setString(4, Dad);// Father's Name
+                                ps.setString(5, Mom);// Mother's Name
+                                ps.setString(6, Phone);// Parent's Phone Number
+                                ps.setString(7, Addh);// Aadhar Number
+                                ps.setString(8, Addr);// Address
+                                ps.setString(9, BloodG);// Blood Group
+                                //Executing the statement
+                                ps.executeUpdate(); // Update the table
+                                JOptionPane.showMessageDialog(null,"Student successfully Added");
+                                dispose();
+                            } catch (SQLException ex) {
+                                Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
+                            }   break;
+                        case "Class 9":
+                            try {
+                                con = DriverManager.getConnection(DB_URL,User,Pass);
+                                //Inserting into table
+                                ps = con.prepareStatement("insert into class_9(Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup)" + "values (?,?,?,?,?,?,?,?,?)");
+                                ps.setString(1,Name); //Name
+                                ps.setString(2, dob);// Date-of-Birth
+                                ps.setString(3, Gen);// Gender
+                                ps.setString(4, Dad);// Father's Name
+                                ps.setString(5, Mom);// Mother's Name
+                                ps.setString(6, Phone);// Parent's Phone Number
+                                ps.setString(7, Addh);// Aadhar Number
+                                ps.setString(8, Addr);// Address
+                                ps.setString(9, BloodG);// Blood Group
+                                //Executing the statement
+                                ps.executeUpdate(); // Update the table
+                                JOptionPane.showMessageDialog(null,"Student successfully Added");
+                                dispose();
+                            } catch (SQLException ex) {
+                                Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
+                            }   break;
+                        case "Class 10":
+                            try {
+                                con = DriverManager.getConnection(DB_URL,User,Pass);
+                                //Inserting into table
+                                ps = con.prepareStatement("insert into class_10(Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup)" + "values (?,?,?,?,?,?,?,?,?)");
+                                ps.setString(1,Name); //Name
+                                ps.setString(2, dob);// Date-of-Birth
+                                ps.setString(3, Gen);// Gender
+                                ps.setString(4, Dad);// Father's Name
+                                ps.setString(5, Mom);// Mother's Name
+                                ps.setString(6, Phone);// Parent's Phone Number
+                                ps.setString(7, Addh);// Aadhar Number
+                                ps.setString(8, Addr);// Address
+                                ps.setString(9, BloodG);// Blood Group
+                                //Executing the statement
+                                ps.executeUpdate(); // Update the table
+                                JOptionPane.showMessageDialog(null,"Student successfully Added");
+                                dispose();
+                            } catch (SQLException ex) {
+                                Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
+                            }   break;
+                        default:
+                            JOptionPane.showMessageDialog(null,"Phone Number or Aadhar Number isn't valid","Error",JOptionPane.ERROR_MESSAGE);
+                            break;
+                    }
             }
-        }
+        
     }//GEN-LAST:event_SubmitActionPerformed
 
     private void BloodItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BloodItemStateChanged

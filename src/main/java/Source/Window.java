@@ -2,6 +2,7 @@ package Source;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,6 +36,7 @@ public class Window extends javax.swing.JFrame {
         Connection con;
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+        PreparedStatement ps;
     /**
      * Creates new form Window
      */
@@ -217,7 +219,7 @@ public class Window extends javax.swing.JFrame {
         ID_opt.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/name_tag_50px.png"))); // NOI18N
-        ID_opt.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5, 50, 50));
+        ID_opt.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5, 50, 40));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -242,7 +244,7 @@ public class Window extends javax.swing.JFrame {
         Fees_opt.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/bill_50px.png"))); // NOI18N
-        Fees_opt.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5, 50, 50));
+        Fees_opt.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5, 50, 40));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -307,7 +309,7 @@ public class Window extends javax.swing.JFrame {
         Class1.setText("Class ");
         IdentityCard.add(Class1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 70, -1));
 
-        IDImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/Identity Card.png"))); // NOI18N
+        IDImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/Identity-Card.png"))); // NOI18N
         IdentityCard.add(IDImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel3.add(IdentityCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 592, 340));
@@ -322,6 +324,12 @@ public class Window extends javax.swing.JFrame {
         });
         ID.add(Class, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
+        Student.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student" }));
+        Student.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StudentActionPerformed(evt);
+            }
+        });
         ID.add(Student, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 100, -1));
 
         Choose.setText("Choose");
@@ -760,6 +768,54 @@ public class Window extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
            } }
     }//GEN-LAST:event_ClassActionPerformed
+
+    private void StudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentActionPerformed
+        String Value2 = Student.getSelectedItem().toString();
+        String value1 = Class.getSelectedItem().toString();
+        try{
+            con = DriverManager.getConnection(DB_URL,User,Pass);
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            if(value1.equals("Class 8")){
+                ps = con.prepareStatement("select Dob,Phone,BloodGroup from class_8 where Name=?");
+                ps.setString(1, Value2);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    Name1.setText(Value2);
+                    Class1.setText(value1);
+                    Birthdate1.setText(rs.getString("Dob"));
+                    Phone1.setText(rs.getString("Phone"));
+                    Blood1.setText(rs.getString("BloodGroup"));
+            }
+            }
+            if(value1.equals("Class 9")){
+                ps = con.prepareStatement("select Dob,Phone,BloodGroup from class_9 where Name=?");
+                ps.setString(1, Value2);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    Name1.setText(Value2);
+                    Class1.setText(value1);
+                    Birthdate1.setText(rs.getString("Dob"));
+                    Phone1.setText(rs.getString("Phone"));
+                    Blood1.setText(rs.getString("BloodGroup"));
+                }
+            }
+            if(value1.equals("Class 10")){
+                ps = con.prepareStatement("select Dob,Phone,BloodGroup from class_10 where Name=?");
+                ps.setString(1, Value2);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    Name1.setText(Value2);
+                    Class1.setText(value1);
+                    Birthdate1.setText(rs.getString("Dob"));
+                    Phone1.setText(rs.getString("Phone"));
+                    Blood1.setText(rs.getString("BloodGroup"));
+                }
+            }
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_StudentActionPerformed
 
    
     /**

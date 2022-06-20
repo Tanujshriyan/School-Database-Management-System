@@ -208,6 +208,7 @@ public class Register_Page extends javax.swing.JFrame {
                if(password.equals(cpassword)){ //Checks if password and confirm password are same
                        try{
                         con = DriverManager.getConnection(DB_URL,User,Pass);
+                        //insert into login table
                         ps = con.prepareStatement("insert into login(Uname,Upassword, Email) " + "values (?,?,?)");
                         ps.setString(1,name); //Namae
                         ps.setString(2,password); //Password

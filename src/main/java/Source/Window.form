@@ -251,7 +251,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="5" width="50" height="50"/>
+                  <AbsoluteConstraints x="20" y="5" width="50" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -305,7 +305,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="5" width="50" height="50"/>
+                  <AbsoluteConstraints x="20" y="5" width="50" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -529,7 +529,7 @@
                     <Component class="javax.swing.JLabel" name="IDImage">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Source/Icons/Identity Card.png"/>
+                          <Image iconType="3" name="/Source/Icons/Identity-Card.png"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -568,9 +568,14 @@
             <Component class="javax.swing.JComboBox" name="Student">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="Student"/>
+                  </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StudentActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
