@@ -266,10 +266,6 @@ public class Student_Form extends javax.swing.JFrame {
             String Addr = Address.getText();
             String Clas = Class.getSelectedItem().toString();
             String BloodG = Blood.getSelectedItem().toString();
-                                System.out.println(Name);
-                                System.out.println(F_Name.getText());
-                                System.out.println(M_Name.getText());
-                                System.out.println(L_Name.getText());
         // Checks if any value is empty   
             if(F_Name.equals("") || M_Name.equals("") || L_Name.equals("") || date == null  || Gen.equals("") || Phone.equals("") || 
                     Dad.equals("") || Mom.equals("") || Addh.equals("") || Addr.equals("") || Clas.equals("") || BloodG.equals("")){
