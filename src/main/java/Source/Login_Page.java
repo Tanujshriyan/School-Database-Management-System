@@ -204,6 +204,9 @@ public class Login_Page extends javax.swing.JFrame {
                                 con.close(); // // Connection Closed
                                 obj.setVisible(true); // Opens the Main window
                             }
+                            if(!result.next()){
+                                JOptionPane.showMessageDialog(null,"Wrong Username or Password.","Error",JOptionPane.INFORMATION_MESSAGE);
+                            }
                 }
                 catch(SQLException se){
                     se.printStackTrace(); // Throws an exception

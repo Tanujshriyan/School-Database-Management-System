@@ -1,5 +1,13 @@
 package Source;
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.PrintJob;
+import java.awt.Toolkit;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +15,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import javax.swing.RowFilter;
@@ -37,6 +46,8 @@ public class Window extends javax.swing.JFrame {
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
         PreparedStatement ps;
+        String File_Name = "";
+        byte[] P_Image = null;
     /**
      * Creates new form Window
      */
@@ -55,6 +66,7 @@ public class Window extends javax.swing.JFrame {
             Fees.setVisible(false);
             ID.setVisible(false);
             Home.setVisible(true);
+            Delete_B.setEnabled(false);
     }
 
     /**
@@ -66,6 +78,7 @@ public class Window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         SideBar = new javax.swing.JPanel();
         Logout_opt = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -91,7 +104,7 @@ public class Window extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         IdentityCard = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        Profile_Image = new javax.swing.JLabel();
         Blood1 = new javax.swing.JLabel();
         Name1 = new javax.swing.JLabel();
         Birthdate1 = new javax.swing.JLabel();
@@ -101,16 +114,11 @@ public class Window extends javax.swing.JFrame {
         Class = new javax.swing.JComboBox<>();
         Student = new javax.swing.JComboBox<>();
         Choose = new javax.swing.JButton();
-        Generate = new javax.swing.JButton();
+        Print = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        Home = new javax.swing.JPanel();
-        kGradientPanel2 = new keeptoo.KGradientPanel();
-        jPanel1 = new javax.swing.JPanel();
-        Time = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         Students = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Stud_table = new javax.swing.JTable();
@@ -124,10 +132,17 @@ public class Window extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        Delete_B = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
+        Home = new javax.swing.JPanel();
+        kGradientPanel2 = new keeptoo.KGradientPanel();
+        jPanel1 = new javax.swing.JPanel();
+        Time = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         Fees = new javax.swing.JPanel();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informix School Management System");
@@ -282,7 +297,7 @@ public class Window extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         IdentityCard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        IdentityCard.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 76, 160, 160));
+        IdentityCard.add(Profile_Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 76, 160, 160));
 
         Blood1.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         Blood1.setForeground(new java.awt.Color(51, 51, 51));
@@ -333,10 +348,20 @@ public class Window extends javax.swing.JFrame {
         ID.add(Student, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 100, -1));
 
         Choose.setText("Choose");
+        Choose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChooseActionPerformed(evt);
+            }
+        });
         ID.add(Choose, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, -1, -1));
 
-        Generate.setText("Generate");
-        ID.add(Generate, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
+        Print.setText("Print");
+        Print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrintActionPerformed(evt);
+            }
+        });
+        ID.add(Print, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
 
         jLabel13.setText("Class :");
         ID.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 103, -1, -1));
@@ -347,32 +372,10 @@ public class Window extends javax.swing.JFrame {
         jLabel23.setText("Student's Photo :");
         ID.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 103, -1, -1));
 
-        jLabel24.setText(" Generate ID Card :");
-        ID.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 103, -1, -1));
+        jLabel24.setText("Print ID Card :");
+        ID.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 103, -1, -1));
 
         Main_panel.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
-
-        Home.setMinimumSize(new java.awt.Dimension(900, 500));
-        Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        kGradientPanel2.setkEndColor(new java.awt.Color(65, 65, 65));
-        kGradientPanel2.setkGradientFocus(100);
-        kGradientPanel2.setkStartColor(new java.awt.Color(0, 0, 0));
-        kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        kGradientPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 180, 180));
-
-        Time.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        kGradientPanel2.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel16.setText("Hello,");
-        kGradientPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        Home.add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
-
-        Main_panel.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
 
         Students.setBackground(new java.awt.Color(204, 204, 204));
         Students.setForeground(new java.awt.Color(204, 204, 204));
@@ -478,32 +481,60 @@ public class Window extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        Students.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, -1, -1));
+        Students.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
 
+        jButton6.setBackground(new java.awt.Color(51, 51, 51));
+        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton6.setText("Edit");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        Students.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
+        Students.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, -1, -1));
 
-        jButton7.setText("Delete");
-        Students.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, -1, -1));
+        Delete_B.setBackground(new java.awt.Color(51, 51, 51));
+        Delete_B.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Delete_B.setText("Delete");
+        Students.add(Delete_B, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
 
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Tools :");
-        Students.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 53, -1, -1));
+        Students.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 53, -1, -1));
 
+        jButton8.setBackground(new java.awt.Color(51, 51, 51));
+        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton8.setText("Refresh Table");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
-        Students.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, -1, -1));
+        Students.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 110, -1));
 
         Main_panel.add(Students, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
+
+        Home.setMinimumSize(new java.awt.Dimension(900, 500));
+        Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        kGradientPanel2.setkEndColor(new java.awt.Color(65, 65, 65));
+        kGradientPanel2.setkGradientFocus(100);
+        kGradientPanel2.setkStartColor(new java.awt.Color(0, 0, 0));
+        kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        kGradientPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 180, 180));
+
+        Time.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        kGradientPanel2.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel16.setText("Hello,");
+        kGradientPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        Home.add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
+
+        Main_panel.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
 
         Fees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         Main_panel.add(Fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
@@ -594,11 +625,7 @@ public class Window extends javax.swing.JFrame {
         new Login_Page().setVisible(true);
        }
     }//GEN-LAST:event_Logout_optMouseClicked
-    
-    private void getTime(){
-        
-        
-    }
+
     private void Fees_optMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Fees_optMouseClicked
         Fees_opt.setBackground(new java.awt.Color(66, 66, 66));
         Home_opt.setBackground(new java.awt.Color(33,33,33));
@@ -618,41 +645,35 @@ public class Window extends javax.swing.JFrame {
             String value = class_list.getSelectedItem().toString();
           System.out.println(value);
           if("Class 9".equals(value)){
-             try{
-                  
-                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+             try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
                     Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
                     String sql = "select * from class_8";
                     ResultSet rs = st.executeQuery(sql);
                     Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
                    con.close();
               }catch(Exception e){
-                  e.printStackTrace();
+                  JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
               }
           }
           else if("Class 9".equals(value)){
-              try{
-                 
-                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+              try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
                     Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
                     String sql = "select * from class_9";
                     ResultSet rs = st.executeQuery(sql);
                     Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
                    con.close();
               }catch(Exception e){
-                  e.printStackTrace();
+                  JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
               }
           }else if("Class 10".equals(value)){
-              try{
-                  
-                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+              try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
                     Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
                     String sql = "select * from class_10";
                     ResultSet rs = st.executeQuery(sql);
                     Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
                     con.close();
               }catch(Exception e){
-                  e.printStackTrace();
+                  JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
               }
           }
     }//GEN-LAST:event_class_listActionPerformed
@@ -677,9 +698,7 @@ public class Window extends javax.swing.JFrame {
          String value = class_list.getSelectedItem().toString();
           System.out.println(value);
           if("Class 8".equals(value)){
-             try{
-                  
-                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+             try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
                     Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
                     String sql = "select * from class_8";
                     ResultSet rs = st.executeQuery(sql);
@@ -690,9 +709,7 @@ public class Window extends javax.swing.JFrame {
               }
           }
           else if("Class 9".equals(value)){
-              try{
-                 
-                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+              try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
                     Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
                     String sql = "select * from class_9";
                     ResultSet rs = st.executeQuery(sql);
@@ -702,9 +719,7 @@ public class Window extends javax.swing.JFrame {
                   e.printStackTrace();
               }
           }else if("Class 10".equals(value)){
-              try{
-                  
-                    Connection con = DriverManager.getConnection(DB_URL,User,Pass);
+              try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
                     Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
                     String sql = "select * from class_10";
                     ResultSet rs = st.executeQuery(sql);
@@ -727,8 +742,7 @@ public class Window extends javax.swing.JFrame {
     private void ClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClassActionPerformed
        String value1 = Class.getSelectedItem().toString();
        if(value1.equals("Class 8")){
-           try {
-               con = DriverManager.getConnection(DB_URL,User,Pass);
+           try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
                Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
                     String sql = "select Name from class_8";
                     ResultSet rs = st.executeQuery(sql);
@@ -741,8 +755,7 @@ public class Window extends javax.swing.JFrame {
            } 
        }
        if(value1.equals("Class 9")){
-           try {
-               con = DriverManager.getConnection(DB_URL,User,Pass);
+           try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
                Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
                     String sql = "select Name from class_9";
                     ResultSet rs = st.executeQuery(sql);
@@ -755,8 +768,7 @@ public class Window extends javax.swing.JFrame {
            }           
        }
        if(value1.equals("Class 10")){
-       try {
-               con = DriverManager.getConnection(DB_URL,User,Pass);
+       try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
                Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
                     String sql = "select Name from class_10";
                     ResultSet rs = st.executeQuery(sql);
@@ -772,8 +784,7 @@ public class Window extends javax.swing.JFrame {
     private void StudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentActionPerformed
         String Value2 = Student.getSelectedItem().toString();
         String value1 = Class.getSelectedItem().toString();
-        try{
-            con = DriverManager.getConnection(DB_URL,User,Pass);
+        try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
             Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
             if(value1.equals("Class 8")){
                 ps = con.prepareStatement("select Dob,Phone,BloodGroup from class_8 where Name=?");
@@ -817,7 +828,55 @@ public class Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_StudentActionPerformed
 
-   
+    private void ChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChooseActionPerformed
+       JFileChooser FChooser = new JFileChooser();
+       FChooser.showOpenDialog(null);
+       File f = FChooser.getSelectedFile();
+       File_Name = f.getAbsolutePath();
+       try{
+        File image = new File(File_Name);
+           FileInputStream fis = new FileInputStream(image);
+           ByteArrayOutputStream baos = new ByteArrayOutputStream();
+           byte[] buf = new byte[1024];
+           for(int readnum; (readnum=fis.read(buf)) !=-1;)
+            {            
+                baos.write(buf,0,readnum);                
+            }
+           P_Image = baos.toByteArray();
+           Profile_Image.setIcon(resizeImage(File_Name, buf));
+       }catch(IOException e){
+           JOptionPane.showMessageDialog(null,"Cannot Open the file","Error",JOptionPane.ERROR_MESSAGE);
+       }
+    }//GEN-LAST:event_ChooseActionPerformed
+
+    private void PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintActionPerformed
+        try {
+            Toolkit tkp = IdentityCard.getToolkit();
+            PrintJob Print_ID = tkp.getPrintJob(this, null, null);
+            Graphics G = Print_ID.getGraphics();
+            IdentityCard.print(G);
+            Print_ID.end();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Cannot print the Identity Card","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_PrintActionPerformed
+      
+    private ImageIcon resizeImage(String imagePath, byte[] pic) {
+        ImageIcon Image_P = null;
+        if(imagePath !=null)
+        {
+            Image_P = new ImageIcon(imagePath);
+        
+        }else{
+            Image_P = new ImageIcon(pic);
+        }
+                
+        Image img = Image_P.getImage();
+        Image img2=img.getScaledInstance(Profile_Image.getHeight(), Profile_Image.getWidth(),  Image.SCALE_SMOOTH);
+        ImageIcon image=new ImageIcon(img2);
+        return image;
+    }
+       
     /**
      * @param args the command line arguments
      */
@@ -842,9 +901,9 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton Choose;
     private javax.swing.JComboBox<String> Class;
     private javax.swing.JLabel Class1;
+    private javax.swing.JButton Delete_B;
     private javax.swing.JPanel Fees;
     private javax.swing.JPanel Fees_opt;
-    private javax.swing.JButton Generate;
     private javax.swing.JTextField Grid_search;
     private javax.swing.JPanel Home;
     private javax.swing.JPanel Home_opt;
@@ -856,6 +915,8 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JPanel Main_panel;
     private javax.swing.JLabel Name1;
     private javax.swing.JLabel Phone1;
+    private javax.swing.JButton Print;
+    private javax.swing.JLabel Profile_Image;
     private javax.swing.JPanel SideBar;
     private javax.swing.JTable Stud_table;
     private javax.swing.JComboBox<String> Student;
@@ -865,12 +926,10 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> class_list;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -891,6 +950,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -900,4 +960,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private keeptoo.KGradientPanel kGradientPanel2;
     // End of variables declaration//GEN-END:variables
+
+
 }
