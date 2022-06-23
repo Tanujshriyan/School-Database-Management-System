@@ -14,7 +14,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -79,6 +82,25 @@ public class Window extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        Home = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        Home_Panel = new javax.swing.JPanel();
+        Logout_Home_Panel = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        Fees_Home_Panel = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        ID_Home_Panel = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        Student_Home_Panel = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        Time = new javax.swing.JLabel();
         SideBar = new javax.swing.JPanel();
         Logout_opt = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -97,6 +119,28 @@ public class Window extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         Main_panel = new javax.swing.JPanel();
+        Fees = new javax.swing.JPanel();
+        ID1 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        Fees_Panel = new javax.swing.JPanel();
+        Fees_Date = new javax.swing.JLabel();
+        Amount_Fees = new javax.swing.JLabel();
+        Parent_Fees = new javax.swing.JLabel();
+        Dollar_Fees = new javax.swing.JLabel();
+        Student_Name_Fees = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        Class3 = new javax.swing.JComboBox<>();
+        Student1 = new javax.swing.JComboBox<>();
+        Print_Fees = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        Parent = new javax.swing.JComboBox<>();
         ID = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -135,12 +179,6 @@ public class Window extends javax.swing.JFrame {
         Delete_B = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        Home = new javax.swing.JPanel();
-        kGradientPanel2 = new keeptoo.KGradientPanel();
-        jPanel1 = new javax.swing.JPanel();
-        Time = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        Fees = new javax.swing.JPanel();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -151,6 +189,132 @@ public class Window extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(900, 550));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Home.setMinimumSize(new java.awt.Dimension(900, 500));
+        Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel7.setBackground(new java.awt.Color(32, 33, 32));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel16.setText("Managing Made Easier!");
+        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 110, -1, -1));
+
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/logo-removebg-preview (1).jpg"))); // NOI18N
+        jPanel7.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Welcome to Informix School Management System");
+        jPanel7.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
+
+        Home.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 140));
+
+        Home_Panel.setBackground(new java.awt.Color(204, 204, 204));
+        Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Logout_Home_Panel.setBackground(new java.awt.Color(207, 39, 35));
+        Logout_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Logout_Home_PanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Logout_Home_PanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Logout_Home_PanelMouseExited(evt);
+            }
+        });
+        Logout_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel37.setText("Logout");
+        Logout_Home_Panel.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 13, -1, -1));
+
+        Home_Panel.add(Logout_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 140, 50));
+
+        Fees_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
+        Fees_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Fees_Home_PanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Fees_Home_PanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Fees_Home_PanelMouseExited(evt);
+            }
+        });
+        Fees_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel33.setText("Fees Payment");
+        Fees_Home_Panel.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 13, -1, -1));
+
+        Home_Panel.add(Fees_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 140, 50));
+
+        ID_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
+        ID_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ID_Home_PanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ID_Home_PanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ID_Home_PanelMouseExited(evt);
+            }
+        });
+        ID_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel36.setText("Identity Card");
+        ID_Home_Panel.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 13, -1, -1));
+
+        Home_Panel.add(ID_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 140, 50));
+
+        Student_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
+        Student_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Student_Home_PanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Student_Home_PanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Student_Home_PanelMouseExited(evt);
+            }
+        });
+        Student_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel32.setText("Students");
+        Student_Home_Panel.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 13, -1, -1));
+
+        Home_Panel.add(Student_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 140, 50));
+
+        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/student_male_100px.png"))); // NOI18N
+        Home_Panel.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/name_tag_100px.png"))); // NOI18N
+        Home_Panel.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
+
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/bill_100px.png"))); // NOI18N
+        Home_Panel.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
+
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/logout_90px.png"))); // NOI18N
+        Home_Panel.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, -1, -1));
+
+        Time.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        Home_Panel.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 5, -1, 0));
+
+        Home.add(Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 900, 410));
+
+        getContentPane().add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 550));
 
         SideBar.setBackground(new java.awt.Color(33, 33, 33));
         SideBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,6 +440,110 @@ public class Window extends javax.swing.JFrame {
         getContentPane().add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 550));
 
         Main_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Fees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ID1.setBackground(new java.awt.Color(23, 23, 23));
+        ID1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setText("Select the Student");
+        ID1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        ID1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 680, 10));
+
+        jPanel5.setBackground(new java.awt.Color(215, 35, 35));
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("Fees Payement");
+        jPanel5.add(jLabel25);
+
+        ID1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 40));
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Fees_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Fees_Date.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
+        Fees_Date.setForeground(new java.awt.Color(51, 51, 51));
+        Fees_Date.setText("Date");
+        Fees_Date.setToolTipText("");
+        Fees_Panel.add(Fees_Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 46, -1, -1));
+
+        Amount_Fees.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
+        Amount_Fees.setForeground(new java.awt.Color(51, 51, 51));
+        Amount_Fees.setText("Amount in words");
+        Fees_Panel.add(Amount_Fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 85, -1, -1));
+
+        Parent_Fees.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
+        Parent_Fees.setForeground(new java.awt.Color(51, 51, 51));
+        Parent_Fees.setText("Parent's Name");
+        Fees_Panel.add(Parent_Fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 67, -1, -1));
+
+        Dollar_Fees.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
+        Dollar_Fees.setForeground(new java.awt.Color(51, 51, 51));
+        Dollar_Fees.setText("Amount");
+        Fees_Panel.add(Dollar_Fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 93, -1, -1));
+
+        Student_Name_Fees.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
+        Student_Name_Fees.setForeground(new java.awt.Color(51, 51, 51));
+        Student_Name_Fees.setText("Student's Name");
+        Fees_Panel.add(Student_Name_Fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 127, -1, -1));
+
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/Receipt.png"))); // NOI18N
+        Fees_Panel.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel6.add(Fees_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 660, 230));
+
+        ID1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 700, 400));
+
+        Class3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select the Class", "Class 8", "Class 9", "Class 10" }));
+        Class3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Class3ActionPerformed(evt);
+            }
+        });
+        ID1.add(Class3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+
+        Student1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student" }));
+        Student1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Student1ActionPerformed(evt);
+            }
+        });
+        ID1.add(Student1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 100, -1));
+
+        Print_Fees.setText("Print");
+        Print_Fees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Print_FeesActionPerformed(evt);
+            }
+        });
+        ID1.add(Print_Fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
+
+        jLabel26.setText("Class :");
+        ID1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 102, -1, -1));
+
+        jLabel27.setText("Student :");
+        ID1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 102, -1, -1));
+
+        jLabel29.setText("Print Fees :");
+        ID1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 102, -1, -1));
+
+        jLabel28.setText("Fees Paid By : ");
+        ID1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 102, -1, -1));
+
+        Parent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        Parent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ParentActionPerformed(evt);
+            }
+        });
+        ID1.add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
+
+        Fees.add(ID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
+
+        Main_panel.add(Fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
 
         ID.setBackground(new java.awt.Color(23, 23, 23));
         ID.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -514,31 +782,6 @@ public class Window extends javax.swing.JFrame {
 
         Main_panel.add(Students, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
 
-        Home.setMinimumSize(new java.awt.Dimension(900, 500));
-        Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        kGradientPanel2.setkEndColor(new java.awt.Color(65, 65, 65));
-        kGradientPanel2.setkGradientFocus(100);
-        kGradientPanel2.setkStartColor(new java.awt.Color(0, 0, 0));
-        kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        kGradientPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 180, 180));
-
-        Time.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        kGradientPanel2.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel16.setText("Hello,");
-        kGradientPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        Home.add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
-
-        Main_panel.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
-
-        Fees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Main_panel.add(Fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
-
         getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 700, 550));
 
         getAccessibleContext().setAccessibleParent(this);
@@ -653,6 +896,7 @@ public class Window extends javax.swing.JFrame {
                    con.close();
               }catch(Exception e){
                   JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                  class_list.setSelectedIndex(0);
               }
           }
           else if("Class 9".equals(value)){
@@ -664,6 +908,7 @@ public class Window extends javax.swing.JFrame {
                    con.close();
               }catch(Exception e){
                   JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                  class_list.setSelectedIndex(0);
               }
           }else if("Class 10".equals(value)){
               try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
@@ -674,6 +919,7 @@ public class Window extends javax.swing.JFrame {
                     con.close();
               }catch(Exception e){
                   JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                  class_list.setSelectedIndex(0);
               }
           }
     }//GEN-LAST:event_class_listActionPerformed
@@ -705,7 +951,8 @@ public class Window extends javax.swing.JFrame {
                     Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
                    con.close();
               }catch(Exception e){
-                  e.printStackTrace();
+                  JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                  class_list.setSelectedIndex(0);
               }
           }
           else if("Class 9".equals(value)){
@@ -716,7 +963,8 @@ public class Window extends javax.swing.JFrame {
                     Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
                    con.close();
               }catch(Exception e){
-                  e.printStackTrace();
+                  JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                  class_list.setSelectedIndex(0);
               }
           }else if("Class 10".equals(value)){
               try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
@@ -726,7 +974,8 @@ public class Window extends javax.swing.JFrame {
                     Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
                     con.close();
               }catch(Exception e){
-                  e.printStackTrace();
+                  JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                  class_list.setSelectedIndex(0);
               }
           }
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -752,6 +1001,7 @@ public class Window extends javax.swing.JFrame {
                     }
            } catch (SQLException ex) {
                JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+               Class.setSelectedIndex(0);
            } 
        }
        if(value1.equals("Class 9")){
@@ -765,6 +1015,7 @@ public class Window extends javax.swing.JFrame {
                     }
            } catch (SQLException ex) {
                JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+               Class.setSelectedIndex(0);
            }           
        }
        if(value1.equals("Class 10")){
@@ -778,6 +1029,7 @@ public class Window extends javax.swing.JFrame {
                     }
            } catch (SQLException ex) {
                JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+               Class.setSelectedIndex(0);
            } }
     }//GEN-LAST:event_ClassActionPerformed
 
@@ -825,6 +1077,7 @@ public class Window extends javax.swing.JFrame {
             
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+            Student.setSelectedIndex(0);
         }
     }//GEN-LAST:event_StudentActionPerformed
 
@@ -860,6 +1113,211 @@ public class Window extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Cannot print the Identity Card","Error",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_PrintActionPerformed
+
+    private void Class3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Class3ActionPerformed
+        String value1 = Class3.getSelectedItem().toString();
+       if(value1.equals("Class 8")){
+           try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
+               Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select Name from class_8";
+                    ResultSet rs = st.executeQuery(sql);
+                    while(rs.next()){
+                    String name2 = rs.getString("Name");
+                    Student1.addItem(name2);
+                    }
+           } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+               Student1.setSelectedIndex(0);
+           } 
+       }
+       if(value1.equals("Class 9")){
+           try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
+               Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select Name from class_9";
+                    ResultSet rs = st.executeQuery(sql);
+                    while(rs.next()){
+                    String name2 = rs.getString("Name");
+                    Student1.addItem(name2);
+                    }
+           } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+               Student1.setSelectedItem(1);
+           }           
+       }
+       if(value1.equals("Class 10")){
+       try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
+           Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select Name from class_10";
+                    ResultSet rs = st.executeQuery(sql);
+                    while(rs.next()){
+                    String name2 = rs.getString("Name");
+                    Student1.addItem(name2);
+                    }
+           } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+               Class3.setSelectedIndex(0);
+           } }
+    }//GEN-LAST:event_Class3ActionPerformed
+
+    private void Student1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Student1ActionPerformed
+        String Value2 = Student1.getSelectedItem().toString();
+        String value1 = Class3.getSelectedItem().toString();
+        try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
+            if(value1.equals("Class 8")){
+                ps = con.prepareStatement("select Father,Mother from class_8 where Name=?");
+                ps.setString(1, Value2);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    Student_Name_Fees.setText(Value2);
+                    Amount_Fees.setText("One Thousand Five Hundered Dollars");
+                    Dollar_Fees.setText("1500.00");
+                       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
+                       LocalDateTime now = LocalDateTime.now();  
+                    Fees_Date.setText(dtf.format(now));
+                    String Name1 = rs.getString("Father");
+                    String Name2 = rs.getString("Mother");
+                    Parent.addItem(Name1);
+                    Parent.addItem(Name2);
+            }
+            }
+            if(value1.equals("Class 9")){
+                ps = con.prepareStatement("select Father,Mother from class_9 where Name=?");
+                ps.setString(1, Value2);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    Student_Name_Fees.setText(Value2);
+                    Amount_Fees.setText("Two Thousand Five Hundered Dollars");
+                    Dollar_Fees.setText("2500.00");
+                       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
+                       LocalDateTime now = LocalDateTime.now();  
+                    Fees_Date.setText(dtf.format(now));
+                    String Name1 = rs.getString("Father");
+                    String Name2 = rs.getString("Mother");
+                    Parent.addItem(Name1);
+                    Parent.addItem(Name2);
+                }
+            }
+            if(value1.equals("Class 10")){
+                ps = con.prepareStatement("select Father,Mother from class_10 where Name=?");
+                ps.setString(1, Value2);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    Student_Name_Fees.setText(Value2);
+                    Amount_Fees.setText("Three Thousand Five Hundered Dollars");
+                    Dollar_Fees.setText("3500.00");
+                       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
+                       LocalDateTime now = LocalDateTime.now();  
+                    Fees_Date.setText(dtf.format(now));
+                    String Name1 = rs.getString("Father");
+                    String Name2 = rs.getString("Mother");
+                    Parent.addItem(Name1);
+                    Parent.addItem(Name2);
+                }
+            }
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+            Student1.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_Student1ActionPerformed
+
+    private void Print_FeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Print_FeesActionPerformed
+        try {
+            Toolkit tkp = Fees_Panel.getToolkit();
+            PrintJob Print_ID = tkp.getPrintJob(this, null, null);
+            Graphics G = Print_ID.getGraphics();
+            Fees_Panel.print(G);
+            Print_ID.end();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Cannot print the Fees Receipt","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_Print_FeesActionPerformed
+
+    private void ParentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParentActionPerformed
+        String Value1 = Parent.getSelectedItem().toString();
+        if(Value1.equals("Select")){
+            Parent_Fees.setText("Parent's Name");
+        }else{
+            Parent_Fees.setText(Value1);
+        }
+    }//GEN-LAST:event_ParentActionPerformed
+
+    private void Student_Home_PanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Student_Home_PanelMouseClicked
+        Student_opt.setBackground(new java.awt.Color(66, 66, 66));
+        Home_opt.setBackground(new java.awt.Color(33,33,33));
+        Fees_opt.setBackground(new java.awt.Color(33,33,33));
+        ID_opt.setBackground(new java.awt.Color(33,33,33));
+            //Panels Visiblity
+                Students.setVisible(true);
+                Fees.setVisible(false);
+                ID.setVisible(false);
+                Home.setVisible(false);
+    }//GEN-LAST:event_Student_Home_PanelMouseClicked
+
+    private void Student_Home_PanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Student_Home_PanelMouseEntered
+        Student_Home_Panel.setBackground(new java.awt.Color(102,102,0));
+    }//GEN-LAST:event_Student_Home_PanelMouseEntered
+
+    private void Student_Home_PanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Student_Home_PanelMouseExited
+        Student_Home_Panel.setBackground(new java.awt.Color(255,102,51));
+    }//GEN-LAST:event_Student_Home_PanelMouseExited
+
+    private void ID_Home_PanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ID_Home_PanelMouseClicked
+        ID_opt.setBackground(new java.awt.Color(66, 66, 66));
+        Home_opt.setBackground(new java.awt.Color(33,33,33));
+        Student_opt.setBackground(new java.awt.Color(33,33,33));
+        Fees_opt.setBackground(new java.awt.Color(33,33,33));
+           //Panels Visiblity
+            Students.setVisible(false);
+            ID.setVisible(true);
+            Home.setVisible(false);
+            Fees.setVisible(false);
+    }//GEN-LAST:event_ID_Home_PanelMouseClicked
+
+    private void ID_Home_PanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ID_Home_PanelMouseEntered
+        ID_Home_Panel.setBackground(new java.awt.Color(102,102,0));
+    }//GEN-LAST:event_ID_Home_PanelMouseEntered
+
+    private void ID_Home_PanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ID_Home_PanelMouseExited
+        ID_Home_Panel.setBackground(new java.awt.Color(255,102,51));
+    }//GEN-LAST:event_ID_Home_PanelMouseExited
+
+    private void Fees_Home_PanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Fees_Home_PanelMouseClicked
+        Fees_opt.setBackground(new java.awt.Color(66, 66, 66));
+        Home_opt.setBackground(new java.awt.Color(33,33,33));
+        Student_opt.setBackground(new java.awt.Color(33,33,33));
+        ID_opt.setBackground(new java.awt.Color(33,33,33));
+        //Panels Visiblity
+            Students.setVisible(false);
+            Fees.setVisible(true);
+            ID.setVisible(false);
+            Home.setVisible(false);
+    }//GEN-LAST:event_Fees_Home_PanelMouseClicked
+
+    private void Fees_Home_PanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Fees_Home_PanelMouseEntered
+        
+        Fees_Home_Panel.setBackground(new java.awt.Color(102,102,0));
+    }//GEN-LAST:event_Fees_Home_PanelMouseEntered
+
+    private void Fees_Home_PanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Fees_Home_PanelMouseExited
+        Fees_Home_Panel.setBackground(new java.awt.Color(255,102,51));
+    }//GEN-LAST:event_Fees_Home_PanelMouseExited
+
+    private void Logout_Home_PanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Logout_Home_PanelMouseClicked
+        int input = JOptionPane.showConfirmDialog(null, "Do you want to logout", "Logout?", WIDTH, HEIGHT);
+       if(input==0){
+           this.dispose();
+        new Login_Page().setVisible(true);
+       }
+    }//GEN-LAST:event_Logout_Home_PanelMouseClicked
+
+    private void Logout_Home_PanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Logout_Home_PanelMouseEntered
+        Logout_Home_Panel.setBackground(new java.awt.Color(253,0,0));
+    }//GEN-LAST:event_Logout_Home_PanelMouseEntered
+
+    private void Logout_Home_PanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Logout_Home_PanelMouseExited
+        Logout_Home_Panel.setBackground(new java.awt.Color(207,39,35));
+    }//GEN-LAST:event_Logout_Home_PanelMouseExited
       
     private ImageIcon resizeImage(String imagePath, byte[] pic) {
         ImageIcon Image_P = null;
@@ -896,30 +1354,46 @@ public class Window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Amount_Fees;
     private javax.swing.JLabel Birthdate1;
     private javax.swing.JLabel Blood1;
     private javax.swing.JButton Choose;
     private javax.swing.JComboBox<String> Class;
     private javax.swing.JLabel Class1;
+    private javax.swing.JComboBox<String> Class3;
     private javax.swing.JButton Delete_B;
+    private javax.swing.JLabel Dollar_Fees;
     private javax.swing.JPanel Fees;
+    private javax.swing.JLabel Fees_Date;
+    private javax.swing.JPanel Fees_Home_Panel;
+    private javax.swing.JPanel Fees_Panel;
     private javax.swing.JPanel Fees_opt;
     private javax.swing.JTextField Grid_search;
     private javax.swing.JPanel Home;
+    private javax.swing.JPanel Home_Panel;
     private javax.swing.JPanel Home_opt;
     private javax.swing.JPanel ID;
+    private javax.swing.JPanel ID1;
     private javax.swing.JLabel IDImage;
+    private javax.swing.JPanel ID_Home_Panel;
     private javax.swing.JPanel ID_opt;
     private javax.swing.JPanel IdentityCard;
+    private javax.swing.JPanel Logout_Home_Panel;
     private javax.swing.JPanel Logout_opt;
     private javax.swing.JPanel Main_panel;
     private javax.swing.JLabel Name1;
+    private javax.swing.JComboBox<String> Parent;
+    private javax.swing.JLabel Parent_Fees;
     private javax.swing.JLabel Phone1;
     private javax.swing.JButton Print;
+    private javax.swing.JButton Print_Fees;
     private javax.swing.JLabel Profile_Image;
     private javax.swing.JPanel SideBar;
     private javax.swing.JTable Stud_table;
     private javax.swing.JComboBox<String> Student;
+    private javax.swing.JComboBox<String> Student1;
+    private javax.swing.JPanel Student_Home_Panel;
+    private javax.swing.JLabel Student_Name_Fees;
     private javax.swing.JPanel Student_opt;
     private javax.swing.JPanel Students;
     private javax.swing.JLabel Time;
@@ -930,6 +1404,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -943,22 +1418,40 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private keeptoo.KGradientPanel kGradientPanel2;
+    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 
 
