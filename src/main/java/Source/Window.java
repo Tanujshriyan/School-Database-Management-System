@@ -45,7 +45,6 @@ public class Window extends javax.swing.JFrame {
         static final String User = "root"; //Database Username
         static final String Pass = "";  //Database Password
         DefaultTableModel dm;
-        Connection con;
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
         PreparedStatement ps;
@@ -69,7 +68,7 @@ public class Window extends javax.swing.JFrame {
             Fees.setVisible(false);
             ID.setVisible(false);
             Home.setVisible(true);
-            Delete_B.setEnabled(false);
+            //Delete_B.setEnabled(false);
             SideBar.setEnabled(false);
             SideBar.setVisible(false);
     }
@@ -84,6 +83,25 @@ public class Window extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        Home = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        Home_Panel = new javax.swing.JPanel();
+        Logout_Home_Panel = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        Fees_Home_Panel = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        ID_Home_Panel = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        Student_Home_Panel = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        Time = new javax.swing.JLabel();
         Main_panel = new javax.swing.JPanel();
         Students = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -100,7 +118,7 @@ public class Window extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         Delete_B = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        Refresh = new javax.swing.JButton();
         Fees = new javax.swing.JPanel();
         ID1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -162,25 +180,6 @@ public class Window extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        Home = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        Home_Panel = new javax.swing.JPanel();
-        Logout_Home_Panel = new javax.swing.JPanel();
-        jLabel37 = new javax.swing.JLabel();
-        Fees_Home_Panel = new javax.swing.JPanel();
-        jLabel33 = new javax.swing.JLabel();
-        ID_Home_Panel = new javax.swing.JPanel();
-        jLabel36 = new javax.swing.JLabel();
-        Student_Home_Panel = new javax.swing.JPanel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        Time = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -191,6 +190,132 @@ public class Window extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(900, 550));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Home.setMinimumSize(new java.awt.Dimension(900, 500));
+        Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel7.setBackground(new java.awt.Color(32, 33, 32));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel16.setText("Managing Made Easier!");
+        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 110, -1, -1));
+
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/logo-removebg-preview (1).jpg"))); // NOI18N
+        jPanel7.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Welcome to Informix School Management System");
+        jPanel7.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
+
+        Home.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 140));
+
+        Home_Panel.setBackground(new java.awt.Color(204, 204, 204));
+        Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Logout_Home_Panel.setBackground(new java.awt.Color(207, 39, 35));
+        Logout_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Logout_Home_PanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Logout_Home_PanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Logout_Home_PanelMouseExited(evt);
+            }
+        });
+        Logout_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel37.setText("Logout");
+        Logout_Home_Panel.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 13, -1, -1));
+
+        Home_Panel.add(Logout_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 140, 50));
+
+        Fees_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
+        Fees_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Fees_Home_PanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Fees_Home_PanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Fees_Home_PanelMouseExited(evt);
+            }
+        });
+        Fees_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel33.setText("Fees Payment");
+        Fees_Home_Panel.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 13, -1, -1));
+
+        Home_Panel.add(Fees_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 140, 50));
+
+        ID_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
+        ID_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ID_Home_PanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ID_Home_PanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ID_Home_PanelMouseExited(evt);
+            }
+        });
+        ID_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel36.setText("Identity Card");
+        ID_Home_Panel.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 13, -1, -1));
+
+        Home_Panel.add(ID_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 140, 50));
+
+        Student_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
+        Student_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Student_Home_PanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Student_Home_PanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Student_Home_PanelMouseExited(evt);
+            }
+        });
+        Student_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel32.setText("Students");
+        Student_Home_Panel.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 13, -1, -1));
+
+        Home_Panel.add(Student_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 140, 50));
+
+        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/student_male_100px.png"))); // NOI18N
+        Home_Panel.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/name_tag_100px.png"))); // NOI18N
+        Home_Panel.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
+
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/bill_100px.png"))); // NOI18N
+        Home_Panel.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
+
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/logout_90px.png"))); // NOI18N
+        Home_Panel.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, -1, -1));
+
+        Time.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        Home_Panel.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 5, -1, 0));
+
+        Home.add(Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 900, 410));
+
+        getContentPane().add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 550));
 
         Main_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -324,15 +449,15 @@ public class Window extends javax.swing.JFrame {
         jLabel21.setText("Tools :");
         Students.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 53, -1, -1));
 
-        jButton8.setBackground(new java.awt.Color(51, 51, 51));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton8.setText("Refresh Table");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        Refresh.setBackground(new java.awt.Color(51, 51, 51));
+        Refresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Refresh.setText("Refresh Table");
+        Refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                RefreshActionPerformed(evt);
             }
         });
-        Students.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 110, -1));
+        Students.add(Refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 110, -1));
 
         Main_panel.add(Students, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 550));
 
@@ -692,132 +817,6 @@ public class Window extends javax.swing.JFrame {
 
         getContentPane().add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 550));
 
-        Home.setMinimumSize(new java.awt.Dimension(900, 500));
-        Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel7.setBackground(new java.awt.Color(32, 33, 32));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel16.setText("Managing Made Easier!");
-        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 110, -1, -1));
-
-        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/logo-removebg-preview (1).jpg"))); // NOI18N
-        jPanel7.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("Welcome to Informix School Management System");
-        jPanel7.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
-
-        Home.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 140));
-
-        Home_Panel.setBackground(new java.awt.Color(204, 204, 204));
-        Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Logout_Home_Panel.setBackground(new java.awt.Color(207, 39, 35));
-        Logout_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Logout_Home_PanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Logout_Home_PanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Logout_Home_PanelMouseExited(evt);
-            }
-        });
-        Logout_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel37.setText("Logout");
-        Logout_Home_Panel.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 13, -1, -1));
-
-        Home_Panel.add(Logout_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 140, 50));
-
-        Fees_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
-        Fees_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Fees_Home_PanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Fees_Home_PanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Fees_Home_PanelMouseExited(evt);
-            }
-        });
-        Fees_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel33.setText("Fees Payment");
-        Fees_Home_Panel.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 13, -1, -1));
-
-        Home_Panel.add(Fees_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 140, 50));
-
-        ID_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
-        ID_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ID_Home_PanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ID_Home_PanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ID_Home_PanelMouseExited(evt);
-            }
-        });
-        ID_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel36.setText("Identity Card");
-        ID_Home_Panel.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 13, -1, -1));
-
-        Home_Panel.add(ID_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 140, 50));
-
-        Student_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
-        Student_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Student_Home_PanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Student_Home_PanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Student_Home_PanelMouseExited(evt);
-            }
-        });
-        Student_Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel32.setText("Students");
-        Student_Home_Panel.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 13, -1, -1));
-
-        Home_Panel.add(Student_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 140, 50));
-
-        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/student_male_100px.png"))); // NOI18N
-        Home_Panel.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
-
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/name_tag_100px.png"))); // NOI18N
-        Home_Panel.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
-
-        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/bill_100px.png"))); // NOI18N
-        Home_Panel.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
-
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/logout_90px.png"))); // NOI18N
-        Home_Panel.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, -1, -1));
-
-        Time.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        Home_Panel.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 5, -1, 0));
-
-        Home.add(Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 900, 410));
-
-        getContentPane().add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 550));
-
         getAccessibleContext().setAccessibleParent(this);
 
         pack();
@@ -976,7 +975,7 @@ public class Window extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshActionPerformed
          String value = class_list.getSelectedItem().toString();
           System.out.println(value);
           if("Class 8".equals(value)){
@@ -1014,7 +1013,7 @@ public class Window extends javax.swing.JFrame {
                   class_list.setSelectedIndex(0);
               }
           }
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_RefreshActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -1398,9 +1397,72 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_Home_optMouseExited
 
     private void Delete_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_BActionPerformed
-        // TODO add your handling code here:
+        String Value = class_list.getSelectedItem().toString();
+        int row = Stud_table.getSelectedRow();
+        String eve = (String) Stud_table.getModel().getValueAt(row, 0);
+        
+        try(Connection con = DriverManager.getConnection(DB_URL, User, Pass)) {
+            if(Value.equals("Class 8")){
+                    ps = con.prepareStatement("delete from class_8 where Name=?");
+                    ps.setString(1, eve);
+                    ps.executeUpdate();
+                    Refresh();
+            }if(Value.equals("Class 9")){
+                    ps = con.prepareStatement("delete from class_8 where Name=?");
+                    ps.setString(1, eve);
+                    ps.executeUpdate();
+                    Refresh();
+            }if(Value.equals("Class 10")){
+                    ps = con.prepareStatement("delete from class_8 where Name=?");
+                    ps.setString(1, eve);
+                    ps.executeUpdate();
+                    Refresh();
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Couldn't delete the row! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_Delete_BActionPerformed
       
+    private void Refresh(){
+     String value = class_list.getSelectedItem().toString();
+          System.out.println(value);
+          if("Class 8".equals(value)){
+             try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
+                    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select * from class_8";
+                    ResultSet rs = st.executeQuery(sql);
+                    Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
+                   con.close();
+              }catch(Exception e){
+                  JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                  class_list.setSelectedIndex(0);
+              }
+          }
+          else if("Class 9".equals(value)){
+              try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
+                    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select * from class_9";
+                    ResultSet rs = st.executeQuery(sql);
+                    Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
+                   con.close();
+              }catch(Exception e){
+                  JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                  class_list.setSelectedIndex(0);
+              }
+          }else if("Class 10".equals(value)){
+              try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
+                    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    String sql = "select * from class_10";
+                    ResultSet rs = st.executeQuery(sql);
+                    Stud_table.setModel(DbUtils.resultSetToTableModel(rs));
+                    con.close();
+              }catch(Exception e){
+                  JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                  class_list.setSelectedIndex(0);
+              }
+          }
+    }
     private ImageIcon resizeImage(String imagePath, byte[] pic) {
         ImageIcon Image_P = null;
         if(imagePath !=null)
@@ -1470,6 +1532,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton Print;
     private javax.swing.JButton Print_Fees;
     private javax.swing.JLabel Profile_Image;
+    private javax.swing.JButton Refresh;
     private javax.swing.JPanel SideBar;
     private javax.swing.JTable Stud_table;
     private javax.swing.JComboBox<String> Student;
@@ -1482,7 +1545,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> class_list;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
