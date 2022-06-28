@@ -7,12 +7,17 @@ package Source;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import static Source.Login_Page.cryptWithMD5;
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *  @author Tanuj & Shravan
@@ -22,6 +27,7 @@ public class Register_Page extends javax.swing.JFrame {
     static final String DB_URL="jdbc:mysql://localhost:3306/student";
     static final String User="root";
     static final String Pass="";
+    private static MessageDigest md;
     /**
      * Creates new form Register
      */
@@ -207,11 +213,12 @@ public class Register_Page extends javax.swing.JFrame {
         else{
                if(password.equals(cpassword)){ //Checks if password and confirm password are same
                        try{
+                           String SB = cryptWithMD5(password);
                         con = DriverManager.getConnection(DB_URL,User,Pass);
                         //insert into login table
                         ps = con.prepareStatement("insert into login(Uname,Upassword, Email) " + "values (?,?,?)");
                         ps.setString(1,name); //Namae
-                        ps.setString(2,password); //Password
+                        ps.setString(2,SB); //Password
                         ps.setString(3,Email); //Email
                         ps.executeUpdate(); // Update the table
                         JOptionPane.showMessageDialog(null,"Registered Successfully");
@@ -230,6 +237,25 @@ public class Register_Page extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_RegisterActionPerformed
 
+    public static String cryptWithMD5(String pass){
+    try {
+        md = MessageDigest.getInstance("MD5");
+        byte[] passBytes = pass.getBytes();
+        md.reset();
+        byte[] digested = md.digest(passBytes);
+        StringBuffer sb = new StringBuffer();
+        for(int i=0;i<digested.length;i++){
+            sb.append(Integer.toHexString(0xff & digested[i]));
+        }
+        return sb.toString();
+    } catch (NoSuchAlgorithmException ex) {
+        Logger.getLogger(Login_Page.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        return null;
+
+
+   }
+    
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // Clear
         UEmail.setText("");

@@ -6,12 +6,16 @@ package Source;
 
         
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.security.MessageDigest;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
         
 /**
@@ -22,6 +26,8 @@ public class Login_Page extends javax.swing.JFrame {
         static final String DB_URL = "jdbc:mysql://localhost:3306/student"; //Database URL
         static final String User = "root"; //Database Username
         static final String Pass = "";  //Database Password
+        private static MessageDigest md;
+        
     public Login_Page() {
         initComponents();
         
@@ -191,11 +197,12 @@ public class Login_Page extends javax.swing.JFrame {
             else
             {
                 try{
+                    String SB = cryptWithMD5(U_pass);
                     con = DriverManager.getConnection(DB_URL,User,Pass); // Connection to database
                     ps = con.prepareStatement("SELECT `Uname`,`Upassword` FROM `login` WHERE `Uname`=? AND `Upassword`=?"); // Checking of username & password
                             System.out.printf("Connection Successfull!"); 
                             ps.setString(1,U_name); //Username
-                            ps.setString(2,U_pass); //Password
+                            ps.setString(2,SB); //Password
                             ResultSet result = ps.executeQuery(); // Query Statement execution
                             if(result.next()){
                                 System.out.printf("Statement Executed"); // Prints on Console
@@ -220,6 +227,25 @@ public class Login_Page extends javax.swing.JFrame {
         // TODO 
     }//GEN-LAST:event_UpassActionPerformed
 
+     public static String cryptWithMD5(String pass){
+    try {
+        md = MessageDigest.getInstance("MD5");
+        byte[] passBytes = pass.getBytes();
+        md.reset();
+        byte[] digested = md.digest(passBytes);
+        StringBuffer sb = new StringBuffer();
+        for(int i=0;i<digested.length;i++){
+            sb.append(Integer.toHexString(0xff & digested[i]));
+        }
+        return sb.toString();
+    } catch (NoSuchAlgorithmException ex) {
+        Logger.getLogger(Login_Page.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        return null;
+
+
+   }
+    
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         // TODO add your handling code here:
         Register_Page obj1 = new Register_Page();
