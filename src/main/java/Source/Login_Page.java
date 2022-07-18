@@ -216,6 +216,7 @@ public class Login_Page extends javax.swing.JFrame {
                             }
                 }
                 catch(SQLException se){
+                    JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
                     se.printStackTrace(); // Throws an exception
                 }
                 
