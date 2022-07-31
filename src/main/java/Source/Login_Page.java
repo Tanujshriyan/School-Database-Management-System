@@ -38,6 +38,7 @@ public class Login_Page extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Uname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -60,14 +61,24 @@ public class Login_Page extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(391, 393));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/Closed.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel7MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 197, -1, -1));
+
         jLabel1.setFont(new java.awt.Font("Leelawadee", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("WELCOME BACK");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 35, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 40, -1, -1));
 
         Uname.setBackground(new java.awt.Color(51, 51, 51));
         Uname.setForeground(new java.awt.Color(255, 255, 255));
-        Uname.setText("   Enter your username");
         Uname.setToolTipText("");
         Uname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         Uname.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -76,17 +87,17 @@ public class Login_Page extends javax.swing.JFrame {
                 UnameActionPerformed(evt);
             }
         });
-        jPanel1.add(Uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 132, 280, 25));
+        jPanel1.add(Uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 132, 280, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 110, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 170, -1, 20));
 
         Login.setBackground(new java.awt.Color(102, 153, 255));
         Login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -98,7 +109,7 @@ public class Login_Page extends javax.swing.JFrame {
                 LoginActionPerformed(evt);
             }
         });
-        jPanel1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 280, 40));
+        jPanel1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 240, 280, 40));
 
         Upass.setBackground(Uname.getBackground());
         Upass.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,17 +120,17 @@ public class Login_Page extends javax.swing.JFrame {
                 UpassActionPerformed(evt);
             }
         });
-        jPanel1.add(Upass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 192, 280, 25));
+        jPanel1.add(Upass, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 192, 280, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Not registered yet? ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 300, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Log into your account");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 50, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,7 +141,7 @@ public class Login_Page extends javax.swing.JFrame {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 295, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 295, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 390));
 
@@ -153,10 +164,10 @@ public class Login_Page extends javax.swing.JFrame {
         // JOptionPane.showMessageDialog(null, U_name + U_pass); Displays a message box outputting Username & Password values
        
             if(U_name.equals("")){
-                JOptionPane.showMessageDialog(null,"Enter the username please","Error",JOptionPane.INFORMATION_MESSAGE); // Error : Username not entered
+                JOptionPane.showMessageDialog(null,"Enter your username","Error",JOptionPane.ERROR); // Error : Username not entered
             }
             else if(U_pass.equals("")){
-                JOptionPane.showMessageDialog(null,"Enter the password please","Error",JOptionPane.INFORMATION_MESSAGE); // Error : Password not entered
+                JOptionPane.showMessageDialog(null,"Enter your password","Error",JOptionPane.ERROR); // Error : Password not entered
             }
             else
             {
@@ -217,6 +228,16 @@ public class Login_Page extends javax.swing.JFrame {
         obj1.setVisible(true); // Opens the register window
     }//GEN-LAST:event_jLabel6MouseClicked
 
+    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
+       jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/Opened.png")));
+       Upass.setEchoChar((char) 0);
+    }//GEN-LAST:event_jLabel7MouseEntered
+
+    private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/Closed.png")));
+        Upass.setEchoChar('*');
+    }//GEN-LAST:event_jLabel7MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -249,6 +270,7 @@ public class Login_Page extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
