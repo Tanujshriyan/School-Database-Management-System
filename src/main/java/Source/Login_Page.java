@@ -42,105 +42,97 @@ public class Login_Page extends javax.swing.JFrame {
         Uname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        Register = new javax.swing.JButton();
         Login = new javax.swing.JButton();
         Upass = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(347, 550));
-        setPreferredSize(new java.awt.Dimension(4, 4));
+        setMaximumSize(new java.awt.Dimension(391, 393));
+        setMinimumSize(new java.awt.Dimension(391, 393));
+        setPreferredSize(new java.awt.Dimension(391, 393));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(122, 166, 151));
+        jPanel1.setBackground(new java.awt.Color(43, 45, 45));
         jPanel1.setMaximumSize(new java.awt.Dimension(334, 520));
         jPanel1.setMinimumSize(new java.awt.Dimension(334, 520));
-        jPanel1.setPreferredSize(new java.awt.Dimension(334, 520));
+        jPanel1.setPreferredSize(new java.awt.Dimension(391, 393));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Leelawadee", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Sign in");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Leelawadee", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setText("WELCOME BACK");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 35, -1, -1));
 
-        Uname.setBackground(new java.awt.Color(122, 166, 151));
+        Uname.setBackground(new java.awt.Color(51, 51, 51));
         Uname.setForeground(new java.awt.Color(255, 255, 255));
-        Uname.setToolTipText("Enter a valid username");
-        Uname.setBorder(null);
+        Uname.setText("   Enter your username");
+        Uname.setToolTipText("");
+        Uname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        Uname.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UnameActionPerformed(evt);
             }
         });
-        jPanel1.add(Uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 220, 25));
+        jPanel1.add(Uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 132, 280, 25));
 
-        jLabel2.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, 20));
 
-        jLabel3.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 20));
 
-        Register.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        Register.setText("Register");
-        Register.setMaximumSize(new java.awt.Dimension(75, 25));
-        Register.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        Register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 470, -1, -1));
-
-        Login.setBackground(new java.awt.Color(218, 0, 55));
+        Login.setBackground(new java.awt.Color(102, 153, 255));
         Login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Login.setForeground(new java.awt.Color(255, 255, 255));
-        Login.setText("Login");
+        Login.setText("Login Now");
+        Login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginActionPerformed(evt);
             }
         });
-        jPanel1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 220, 40));
+        jPanel1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 280, 40));
 
-        Upass.setBackground(new java.awt.Color(122, 166, 151));
+        Upass.setBackground(Uname.getBackground());
         Upass.setForeground(new java.awt.Color(255, 255, 255));
-        Upass.setToolTipText("Enter a valid password");
-        Upass.setBorder(null);
+        Upass.setToolTipText("");
+        Upass.setBorder(Uname.getBorder());
         Upass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpassActionPerformed(evt);
             }
         });
-        jPanel1.add(Upass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 220, 25));
+        jPanel1.add(Upass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 192, 280, 25));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Don't have an account?");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, -1, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 220, 10));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 220, 10));
+        jLabel4.setText("Not registered yet? ");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Use your Account");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Log into your account");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Register →");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 295, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 390));
 
         pack();
         setLocationRelativeTo(null);
@@ -219,12 +211,11 @@ public class Login_Page extends javax.swing.JFrame {
 
    }
     
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        // TODO add your handling code here:
-        Register_Page obj1 = new Register_Page();
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+       Register_Page obj1 = new Register_Page();
         dispose();
         obj1.setVisible(true); // Opens the register window
-    }//GEN-LAST:event_RegisterActionPerformed
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -250,7 +241,6 @@ public class Login_Page extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Login;
-    private javax.swing.JButton Register;
     private javax.swing.JTextField Uname;
     private javax.swing.JPasswordField Upass;
     private javax.swing.JLabel jLabel1;
@@ -258,8 +248,7 @@ public class Login_Page extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 }
