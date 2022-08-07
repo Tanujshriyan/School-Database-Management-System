@@ -246,6 +246,7 @@ public class Edit_Student_Form extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 690));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GenderItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GenderItemStateChanged
@@ -295,7 +296,7 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     ps.setString(10, Value2);// Selected Student
                     //Executing the statement
                     ps.executeUpdate(); // Update the table
-                    JOptionPane.showMessageDialog(null,"Student successfully Added");
+                    JOptionPane.showMessageDialog(null,"Student successfully updated");
                     dispose();
                 } catch (SQLException ex) {
                     Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
@@ -317,7 +318,7 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     ps.setString(10, Value2);// Selected Student
                     //Executing the statement
                     ps.executeUpdate(); // Update the table
-                    JOptionPane.showMessageDialog(null,"Student successfully Added");
+                    JOptionPane.showMessageDialog(null,"Student successfully updated");
                     dispose();
                 } catch (SQLException ex) {
                     Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
@@ -339,7 +340,7 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     ps.setString(10, Value2);// Selected Student
                     //Executing the statement
                     ps.executeUpdate(); // Update the table
-                    JOptionPane.showMessageDialog(null,"Student successfully Added");
+                    JOptionPane.showMessageDialog(null,"Student successfully updated");
                     dispose();
                 } catch (SQLException ex) {
                     Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
@@ -414,7 +415,6 @@ public class Edit_Student_Form extends javax.swing.JFrame {
         String value1 = Class.getSelectedItem().toString();
         try{
             con = DriverManager.getConnection(DB_URL,User,Pass);
-            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
             if(value1.equals("Class 8")){
                 ps = con.prepareStatement("select Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup from class_8 where Name=?");
                 ps.setString(1, Value2);
@@ -425,10 +425,6 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     F_Name.setText(newStr[0]);
                     M_Name.setText(newStr[1]);
                     L_Name.setText(newStr[2]);
-                    String str = rs.getString("Dob");
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                    LocalDate dateTime = LocalDate.parse(str, formatter);
-                    datePicker1.setDate(dateTime);
                     Class1.setSelectedItem(value1);
                     Gender.setSelectedItem(rs.getString("Gender"));
                     Father.setText(rs.getString("Father"));
@@ -437,6 +433,9 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     Addhar.setText(rs.getString("Aadhar"));
                     Address.setText(rs.getString("Address"));
                     Blood.setSelectedItem(rs.getString("BloodGroup"));
+                    String str = rs.getString("Dob");
+                    LocalDate dateTime = LocalDate.parse(str);
+                    datePicker1.setDate(dateTime); 
                 }
             }
             if(value1.equals("Class 9")){
@@ -450,9 +449,8 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     M_Name.setText(newStr[1]);
                     L_Name.setText(newStr[2]);
                     String str = rs.getString("Dob");
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                    LocalDate dateTime = LocalDate.parse(str, formatter);
-                    datePicker1.setDate(dateTime);
+                    LocalDate dateTime = LocalDate.parse(str);
+                    datePicker1.setDate(dateTime); 
                     Class1.setSelectedItem(value1);
                     Gender.setSelectedItem(rs.getString("Gender"));
                     Father.setText(rs.getString("Father"));
@@ -474,9 +472,8 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     M_Name.setText(newStr[1]);
                     L_Name.setText(newStr[2]);
                     String str = rs.getString("Dob");
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                    LocalDate dateTime = LocalDate.parse(str, formatter);
-                    datePicker1.setDate(dateTime);
+                    LocalDate dateTime = LocalDate.parse(str);
+                    datePicker1.setDate(dateTime); 
                     Class1.setSelectedItem(value1);
                     Gender.setSelectedItem(rs.getString("Gender"));
                     Father.setText(rs.getString("Father"));
