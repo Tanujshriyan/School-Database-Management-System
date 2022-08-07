@@ -394,7 +394,7 @@ public class Window extends javax.swing.JFrame {
         });
         Students.add(Grid_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 94, 170, -1));
 
-        jPanel4.setBackground(new java.awt.Color(240, 84, 84));
+        jPanel4.setBackground(new java.awt.Color(215, 35, 35));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -972,7 +972,8 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_Grid_searchKeyReleased
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
+         Edit_Student_Form a = new Edit_Student_Form();
+         a.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshActionPerformed
@@ -1424,7 +1425,7 @@ public class Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Delete_BActionPerformed
       
-    private void Refresh(){
+    public void Refresh(){
      String value = class_list.getSelectedItem().toString();
           System.out.println(value);
           if("Class 8".equals(value)){

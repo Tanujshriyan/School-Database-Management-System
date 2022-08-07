@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import Source.Window;
 
 /**
  *
@@ -258,6 +259,7 @@ public class Student_Form extends javax.swing.JFrame {
         // Textbox inputs transferred to variables    
             String Name = F_Name.getText() +" "+M_Name.getText()+" "+L_Name.getText();
             LocalDate date = datePicker1.getDate();
+            System.out.println(date);
             String Gen = Gender.getSelectedItem().toString();
             String Phone = PPhone.getText();
             String Dad = Father.getText();
@@ -266,6 +268,7 @@ public class Student_Form extends javax.swing.JFrame {
             String Addr = Address.getText();
             String Clas = Class.getSelectedItem().toString();
             String BloodG = Blood.getSelectedItem().toString();
+            Window a = new Window();
         // Checks if any value is empty   
             if(F_Name.equals("") || M_Name.equals("") || L_Name.equals("") || date == null  || Gen.equals("") || Phone.equals("") || 
                     Dad.equals("") || Mom.equals("") || Addh.equals("") || Addr.equals("") || Clas.equals("") || BloodG.equals("")){
@@ -293,6 +296,7 @@ public class Student_Form extends javax.swing.JFrame {
                                 ps.executeUpdate(); // Update the table
                                 JOptionPane.showMessageDialog(null,"Student successfully Added");
                                 dispose();
+                                a.Refresh();
                             } catch (SQLException ex) {
                                 Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
                             }   break;
@@ -314,6 +318,7 @@ public class Student_Form extends javax.swing.JFrame {
                                 ps.executeUpdate(); // Update the table
                                 JOptionPane.showMessageDialog(null,"Student successfully Added");
                                 dispose();
+                                a.Refresh();
                             } catch (SQLException ex) {
                                 Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
                             }   break;
@@ -335,6 +340,7 @@ public class Student_Form extends javax.swing.JFrame {
                                 ps.executeUpdate(); // Update the table
                                 JOptionPane.showMessageDialog(null,"Student successfully Added");
                                 dispose();
+                                a.Refresh();
                             } catch (SQLException ex) {
                                 Logger.getLogger(Student_Form.class.getName()).log(Level.SEVERE, null, ex);
                             }   break;

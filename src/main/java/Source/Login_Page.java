@@ -6,6 +6,7 @@ package Source;
 
         
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.awt.geom.RoundRectangle2D;
 import java.security.MessageDigest;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
@@ -50,15 +51,17 @@ public class Login_Page extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(391, 393));
-        setMinimumSize(new java.awt.Dimension(391, 393));
-        setPreferredSize(new java.awt.Dimension(391, 393));
+        setTitle("Login");
+        setMaximumSize(new java.awt.Dimension(442, 393));
+        setMinimumSize(new java.awt.Dimension(442, 393));
+        setPreferredSize(new java.awt.Dimension(442, 393));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(43, 45, 45));
-        jPanel1.setMaximumSize(new java.awt.Dimension(334, 520));
-        jPanel1.setMinimumSize(new java.awt.Dimension(334, 520));
-        jPanel1.setPreferredSize(new java.awt.Dimension(391, 393));
+        jPanel1.setMaximumSize(new java.awt.Dimension(442, 393));
+        jPanel1.setMinimumSize(new java.awt.Dimension(442, 393));
+        jPanel1.setPreferredSize(new java.awt.Dimension(442, 393));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/Closed.png"))); // NOI18N
@@ -80,7 +83,7 @@ public class Login_Page extends javax.swing.JFrame {
         Uname.setBackground(new java.awt.Color(51, 51, 51));
         Uname.setForeground(new java.awt.Color(255, 255, 255));
         Uname.setToolTipText("");
-        Uname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        Uname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         Uname.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +112,7 @@ public class Login_Page extends javax.swing.JFrame {
                 LoginActionPerformed(evt);
             }
         });
-        jPanel1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 240, 280, 40));
+        jPanel1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 260, 280, 40));
 
         Upass.setBackground(Uname.getBackground());
         Upass.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,7 +128,7 @@ public class Login_Page extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Not registered yet? ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 300, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 315, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,9 +144,9 @@ public class Login_Page extends javax.swing.JFrame {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 295, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 310, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 390));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 443, 393));
 
         pack();
         setLocationRelativeTo(null);
@@ -175,19 +178,19 @@ public class Login_Page extends javax.swing.JFrame {
                     String SB = cryptWithMD5(U_pass);
                     con = DriverManager.getConnection(DB_URL,User,Pass); // Connection to database
                     ps = con.prepareStatement("SELECT `Uname`,`Upassword` FROM `login` WHERE `Uname`=? AND `Upassword`=?"); // Checking of username & password
-                            System.out.printf("Connection Successfull!"); 
+                            //System.out.printf("Connection Successfull!"); 
                             ps.setString(1,U_name); //Username
                             ps.setString(2,SB); //Password
                             ResultSet result = ps.executeQuery(); // Query Statement execution
                             if(result.next()){
-                                System.out.printf("Statement Executed"); // Prints on Console
+                                // System.out.printf("Statement Executed"); // Prints on Console
                                 JOptionPane.showMessageDialog(null,"Login Successfull!","Confirmation",JOptionPane.INFORMATION_MESSAGE); // Confirmation Dialogue Box
                                 this.dispose(); // Closes the window
-                                con.close(); // // Connection Closed
                                 obj.setVisible(true); // Opens the Main window
                             }
-                            if(!result.next()){
+                            else{
                                 JOptionPane.showMessageDialog(null,"Wrong Username or Password.","Error",JOptionPane.INFORMATION_MESSAGE);
+                                con.close();
                             }
                 }
                 catch(SQLException se){
