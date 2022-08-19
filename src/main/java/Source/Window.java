@@ -108,11 +108,8 @@ public class Window extends javax.swing.JFrame {
         Stud_table = new javax.swing.JTable();
         class_list = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        Grid_search = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -364,35 +361,11 @@ public class Window extends javax.swing.JFrame {
                 class_listActionPerformed(evt);
             }
         });
-        Students.add(class_list, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 180, -1));
+        Students.add(class_list, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 180, -1));
 
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Class :");
-        Students.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 92, -1, -1));
-
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel18.setText("Search :");
-        Students.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 92, -1, -1));
-
-        Grid_search.setBackground(new java.awt.Color(221, 221, 221));
-        Grid_search.setBorder(null);
-        Grid_search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Grid_searchActionPerformed(evt);
-            }
-        });
-        Grid_search.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Grid_searchKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                Grid_searchKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                Grid_searchKeyTyped(evt);
-            }
-        });
-        Students.add(Grid_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 94, 170, -1));
+        Students.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 92, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(215, 35, 35));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -404,9 +377,6 @@ public class Window extends javax.swing.JFrame {
         jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 4, -1, -1));
 
         Students.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 40));
-
-        jLabel20.setText("___________________________________");
-        Students.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, -1, -1));
         Students.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 680, 110));
 
         jButton5.setBackground(new java.awt.Color(19, 170, 82));
@@ -826,25 +796,7 @@ public class Window extends javax.swing.JFrame {
     private void Home_optMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home_optMouseEntered
         Home_opt.setBackground(new java.awt.Color(66,81,79));
     }//GEN-LAST:event_Home_optMouseEntered
-    private void Grid_searchKeyTyped(java.awt.event.KeyEvent evt) { 
-        Grid_search.getDocument().addDocumentListener(new DocumentListener(){
-
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                search(Grid_search.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                search(Grid_search.getText());
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                search(Grid_search.getText());
-            }
-        });
-    }
+   
     public void search(String str){
         dm = (DefaultTableModel) Stud_table.getModel();
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(dm);
@@ -959,18 +911,6 @@ public class Window extends javax.swing.JFrame {
           }
     }//GEN-LAST:event_class_listActionPerformed
 
-    private void Grid_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Grid_searchActionPerformed
-
-    }//GEN-LAST:event_Grid_searchActionPerformed
-
-    private void Grid_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Grid_searchKeyPressed
-
-    }//GEN-LAST:event_Grid_searchKeyPressed
-
-    private void Grid_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Grid_searchKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Grid_searchKeyReleased
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
          Edit_Student_Form a = new Edit_Student_Form();
          a.setVisible(true);
@@ -1075,43 +1015,44 @@ public class Window extends javax.swing.JFrame {
         try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
             Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
             if(value1.equals("Class 8")){
-                ps = con.prepareStatement("select Dob,Phone,BloodGroup from class_8 where Name=?");
+                ps = con.prepareStatement("select Dob,FatherNumber,BloodGroup from class_8 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     Name1.setText(Value2);
                     Class1.setText(value1);
                     Birthdate1.setText(rs.getString("Dob"));
-                    Phone1.setText(rs.getString("Phone"));
+                    Phone1.setText(rs.getString("FatherNumber"));
                     Blood1.setText(rs.getString("BloodGroup"));
             }
             }
             if(value1.equals("Class 9")){
-                ps = con.prepareStatement("select Dob,Phone,BloodGroup from class_9 where Name=?");
+                ps = con.prepareStatement("select Dob,FatherNumber,BloodGroup from class_8 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     Name1.setText(Value2);
                     Class1.setText(value1);
                     Birthdate1.setText(rs.getString("Dob"));
-                    Phone1.setText(rs.getString("Phone"));
+                    Phone1.setText(rs.getString("FatherNumber"));
                     Blood1.setText(rs.getString("BloodGroup"));
                 }
             }
             if(value1.equals("Class 10")){
-                ps = con.prepareStatement("select Dob,Phone,BloodGroup from class_10 where Name=?");
+                ps = con.prepareStatement("select Dob,FatherNumber,BloodGroup from class_8 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     Name1.setText(Value2);
                     Class1.setText(value1);
                     Birthdate1.setText(rs.getString("Dob"));
-                    Phone1.setText(rs.getString("Phone"));
+                    Phone1.setText(rs.getString("FatherNumber"));
                     Blood1.setText(rs.getString("BloodGroup"));
                 }
             }
             
         }catch(SQLException ex){
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
             Student.setSelectedIndex(0);
         }
@@ -1200,58 +1141,80 @@ public class Window extends javax.swing.JFrame {
         String value1 = Class3.getSelectedItem().toString();
         try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
             if(value1.equals("Class 8")){
-                ps = con.prepareStatement("select Father,Mother from class_8 where Name=?");
+                ps = con.prepareStatement("select Caste,FatherName,MotherName from class_8 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
+                    String caste = rs.getString("Caste");
+                    if(caste.equals("SCST")){
+                        Amount_Fees.setText("One Thousand Dollars");
+                        Dollar_Fees.setText("1000.00");}
+                    else{
+                        Amount_Fees.setText("One Thousand Five Hundered Dollars");
+                        Dollar_Fees.setText("1500.00");
+                    }
                     Student_Name_Fees.setText(Value2);
-                    Amount_Fees.setText("One Thousand Five Hundered Dollars");
-                    Dollar_Fees.setText("1500.00");
+                    
                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
                        LocalDateTime now = LocalDateTime.now();  
                     Fees_Date.setText(dtf.format(now));
-                    String Name1 = rs.getString("Father");
-                    String Name2 = rs.getString("Mother");
-                    Parent.addItem(Name1);
-                    Parent.addItem(Name2);
+                    String Father = rs.getString("FatherName");
+                    String Mother = rs.getString("MotherName");
+                    Parent.addItem(Father);
+                    Parent.addItem(Mother);
             }
             }
             if(value1.equals("Class 9")){
-                ps = con.prepareStatement("select Father,Mother from class_9 where Name=?");
+                ps = con.prepareStatement("select Caste,FatherName,MotherName from class_8 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
+                    String caste = rs.getString("Caste");
+                    if(caste.equals("SCST")){
+                        Amount_Fees.setText("One Thousand Dollars");
+                        Dollar_Fees.setText("1000.00");}
+                    else{
+                        Amount_Fees.setText("One Thousand Five Hundered Dollars");
+                        Dollar_Fees.setText("1500.00");
+                    }
                     Student_Name_Fees.setText(Value2);
-                    Amount_Fees.setText("Two Thousand Five Hundered Dollars");
-                    Dollar_Fees.setText("2500.00");
+                    
                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
                        LocalDateTime now = LocalDateTime.now();  
                     Fees_Date.setText(dtf.format(now));
-                    String Name1 = rs.getString("Father");
-                    String Name2 = rs.getString("Mother");
-                    Parent.addItem(Name1);
-                    Parent.addItem(Name2);
+                    String Father = rs.getString("FatherName");
+                    String Mother = rs.getString("MotherName");
+                    Parent.addItem(Father);
+                    Parent.addItem(Mother);
                 }
             }
             if(value1.equals("Class 10")){
-                ps = con.prepareStatement("select Father,Mother from class_10 where Name=?");
+                ps = con.prepareStatement("select Caste,FatherName,MotherName from class_8 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
+                    String caste = rs.getString("Caste");
+                    if(caste.equals("SCST")){
+                        Amount_Fees.setText("One Thousand Dollars");
+                        Dollar_Fees.setText("1000.00");}
+                    else{
+                        Amount_Fees.setText("One Thousand Five Hundered Dollars");
+                        Dollar_Fees.setText("1500.00");
+                    }
                     Student_Name_Fees.setText(Value2);
-                    Amount_Fees.setText("Three Thousand Five Hundered Dollars");
-                    Dollar_Fees.setText("3500.00");
+                    
                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
                        LocalDateTime now = LocalDateTime.now();  
                     Fees_Date.setText(dtf.format(now));
-                    String Name1 = rs.getString("Father");
-                    String Name2 = rs.getString("Mother");
-                    Parent.addItem(Name1);
-                    Parent.addItem(Name2);
+                    String Father = rs.getString("FatherName");
+                    String Mother = rs.getString("MotherName");
+                    Parent.addItem(Father);
+                    Parent.addItem(Mother);
                 }
             }
             
         }catch(SQLException ex){
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
             Student1.setSelectedIndex(0);
         }
@@ -1513,7 +1476,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JPanel Fees_Home_Panel;
     private javax.swing.JPanel Fees_Panel;
     private javax.swing.JPanel Fees_opt;
-    private javax.swing.JTextField Grid_search;
     private javax.swing.JPanel Home;
     private javax.swing.JPanel Home_Panel;
     private javax.swing.JPanel Home_opt;
@@ -1555,10 +1517,8 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
