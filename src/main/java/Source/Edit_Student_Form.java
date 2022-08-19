@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
  * @author tanuj
  */
 public class Edit_Student_Form extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Edit_Student_Form
      */
@@ -56,22 +56,20 @@ public class Edit_Student_Form extends javax.swing.JFrame {
         Gender = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Address = new javax.swing.JTextArea();
+        PermanentAdd = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         Addhar = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         Class = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        P_Phone = new javax.swing.JTextField();
+        FPhone = new javax.swing.JTextField();
         Submit = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         jLabel13 = new javax.swing.JLabel();
         Father = new javax.swing.JTextField();
         Mother = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
         Blood = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
         F_Name = new javax.swing.JTextField();
         M_Name = new javax.swing.JTextField();
         L_Name = new javax.swing.JTextField();
@@ -83,44 +81,68 @@ public class Edit_Student_Form extends javax.swing.JFrame {
         Student = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        Religion = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        Caste = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        Gen_other = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        MPhone = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TemporaryAdd = new javax.swing.JTextArea();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        Prev_School = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        Prev_Percent = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        F_Occu = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        M_Occu = new javax.swing.JTextField();
+        same = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(813, 701));
+        setMinimumSize(new java.awt.Dimension(813, 701));
+        setPreferredSize(new java.awt.Dimension(813, 701));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setForeground(new java.awt.Color(60, 63, 65));
+        jPanel1.setMinimumSize(new java.awt.Dimension(794, 652));
         jPanel1.setAutoscrolls(true);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setText("Student Updation");
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Student Editing Form");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 27, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
 
         jLabel2.setText("Please fill the form very carefully");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 65, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 380, 10));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 770, 10));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Aadhar Card Number");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 150, -1));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 150, -1));
 
         jLabel4.setText("First Name");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 233, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 200, -1, -1));
 
         jLabel5.setText("Middle Name");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 233, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, -1));
 
         jLabel6.setText("Last Name");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 233, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
 
+        jLabel7.setText("Caste");
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Student Name");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 180, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 143, -1, -1));
 
+        jLabel8.setText("If Other, specify");
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Gender");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 100, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 130, -1));
 
-        Gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        Gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Male", "Female", "Other" }));
         Gender.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 GenderItemStateChanged(evt);
@@ -131,43 +153,43 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                 GenderActionPerformed(evt);
             }
         });
-        jPanel1.add(Gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 100, -1));
+        jPanel1.add(Gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 245, 100, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Father's Name");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 330, 170, -1));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 350, 170, -1));
 
-        Address.setColumns(20);
-        Address.setRows(5);
-        Address.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(Address);
+        PermanentAdd.setColumns(20);
+        PermanentAdd.setRows(5);
+        PermanentAdd.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(PermanentAdd);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 500, 330, 60));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 510, 330, 60));
 
+        jLabel10.setText("Percentage");
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Class");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 70, -1));
-        jPanel1.add(Addhar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 140, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, 160, -1));
+        jPanel1.add(Addhar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 245, 170, -1));
 
+        jLabel11.setText("Permanent Address");
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("Address");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 470, 95, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 480, 190, -1));
 
-        Class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Class 8", "Class 9", "Class 10", " " }));
-        jPanel1.add(Class, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 100, -1));
+        Class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Class 8", "Class 9", "Class 10", "" }));
+        jPanel1.add(Class, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 100, -1));
 
+        jLabel12.setText("Date of Birth");
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("Birth Date");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 260, 95, -1));
-        jPanel1.add(P_Phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 600, 160, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 220, 95, -1));
+        jPanel1.add(FPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 230, -1));
 
-        Submit.setText("Submit");
+        Submit.setText("Update");
         Submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SubmitActionPerformed(evt);
             }
         });
-        jPanel1.add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 640, -1, -1));
+        jPanel1.add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 630, -1, -1));
 
         Exit.setText("Close");
         Exit.addActionListener(new java.awt.event.ActionListener() {
@@ -175,20 +197,16 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                 ExitActionPerformed(evt);
             }
         });
-        jPanel1.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 640, -1, -1));
-        jPanel1.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 290, 210, -1));
+        jPanel1.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 630, -1, -1));
+        jPanel1.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 245, 210, -1));
 
+        jLabel13.setText("Father's Occupation");
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setText("Parent's Phone Number");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 570, 170, -1));
-        jPanel1.add(Father, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 360, 210, -1));
-        jPanel1.add(Mother, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 430, 210, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 170, -1));
+        jPanel1.add(Father, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 380, 210, -1));
+        jPanel1.add(Mother, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 440, 210, -1));
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setText("Mother's Name");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 290, 170, -1));
-
-        Blood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A (A+)", "A (A-)", "B (B+)", "B (B-)", "O (O+)", "O (O-)", "AB (AB+)", "AB (AB-)" }));
+        Blood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "A (A+)", "A (A-)", "B (B+)", "B (B-)", "O (O+)", "O (O-)", "AB (AB+)", "AB (AB-)" }));
         Blood.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 BloodItemStateChanged(evt);
@@ -199,22 +217,18 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                 BloodActionPerformed(evt);
             }
         });
-        jPanel1.add(Blood, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 100, -1));
+        jPanel1.add(Blood, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 310, 100, -1));
+        jPanel1.add(F_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 170, 90, -1));
+        jPanel1.add(M_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 90, -1));
+        jPanel1.add(L_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 90, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 133, 770, 10));
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("Blood Group");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 100, -1));
-        jPanel1.add(F_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 210, 90, -1));
-        jPanel1.add(M_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 90, -1));
-        jPanel1.add(L_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 90, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 380, 10));
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setText("Select the Student");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 100, -1, -1));
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 75, -1, -1));
 
         jLabel17.setText("Class :");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 143, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 107, -1, -1));
 
         Class1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select the Class", "Class 8", "Class 9", "Class 10" }));
         Class1.addActionListener(new java.awt.event.ActionListener() {
@@ -222,10 +236,10 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                 Class1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Class1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jPanel1.add(Class1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 106, -1, -1));
 
         jLabel22.setText("Student :");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 143, -1, -1));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 107, -1, -1));
 
         Student.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student" }));
         Student.addActionListener(new java.awt.event.ActionListener() {
@@ -233,17 +247,76 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                 StudentActionPerformed(evt);
             }
         });
-        jPanel1.add(Student, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 100, -1));
+        jPanel1.add(Student, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 106, 100, -1));
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Blood Group");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 100, -1));
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 280, 100, -1));
 
+        jLabel19.setText("Mother's Occupation");
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel19.setText("Mother's Name");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 400, 170, -1));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 170, -1));
+        jPanel1.add(Religion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 170, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 690));
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setText("Student Name");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 143, -1, -1));
+        jPanel1.add(Caste, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, 170, -1));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setText("Religion");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 143, -1, -1));
+        jPanel1.add(Gen_other, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 245, 170, -1));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel20.setText("Gender");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 100, -1));
+        jPanel1.add(MPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 230, -1));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel21.setText("Mother's Name");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 410, 170, -1));
+
+        TemporaryAdd.setColumns(20);
+        TemporaryAdd.setRows(5);
+        TemporaryAdd.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(TemporaryAdd);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, 330, 60));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel23.setText("Temporary Address");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, 190, -1));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel24.setText("Class");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 70, -1));
+        jPanel1.add(Prev_School, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 300, -1));
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel25.setText("Previous School Name");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 160, -1));
+        jPanel1.add(Prev_Percent, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 170, -1));
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel26.setText("Father's Phone Number");
+        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 170, -1));
+        jPanel1.add(F_Occu, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 270, -1));
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel27.setText("Mother's Phone Number");
+        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 170, -1));
+        jPanel1.add(M_Occu, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, 270, -1));
+
+        same.setText("Permanent and Temporary address are same");
+        same.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                sameItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(same, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 580, 330, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 700));
 
         pack();
         setLocationRelativeTo(null);
@@ -254,25 +327,59 @@ public class Edit_Student_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_GenderItemStateChanged
 
     private void GenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderActionPerformed
-
+        String gen = (String) Gender.getSelectedItem();
+        if(gen.equals("Other")){
+            Gen_other.setEnabled((true));
+        }else{
+            Gen_other.setEnabled(false);
+        }
     }//GEN-LAST:event_GenderActionPerformed
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
         // Textbox inputs transferred to variables
         String Value2 = Student.getSelectedItem().toString();
         String Name = F_Name.getText() +" "+M_Name.getText()+" "+L_Name.getText();
+        String religion = Religion.getText();
+        String caste = Caste.getText();
         LocalDate date = datePicker1.getDate();
+        String comp_date = "2009-08-19 00:00:00";
+        LocalDate d1 = LocalDate.parse(comp_date);
         String Gen = Gender.getSelectedItem().toString();
-        String Phone = P_Phone.getText();
+        if(Gen.equals("Other")){
+           Gen = Gen_other.getText();
+        }
+        String Prev_school = Prev_School.getText();
+        String Prev_percent = Prev_Percent.getText();
+        String fPhone = FPhone.getText();
+        String mPhone = MPhone.getText();
         String Dad = Father.getText();
         String Mom = Mother.getText();
         String Addh = Addhar.getText();
-        String Addr = Address.getText();
+        String f_Occu = F_Occu.getText();
+        String m_Occu = M_Occu.getText();
+        String PermAddr = PermanentAdd.getText();
+        String TempAddr = TemporaryAdd.getText();
         String Clas = Class.getSelectedItem().toString();
         String BloodG = Blood.getSelectedItem().toString();
         // Checks if any value is empty
-        if(F_Name.equals("") || M_Name.equals("") || L_Name.equals("") || date == null  || Gen.equals("") || Phone.equals("") ||
-            Dad.equals("") || Mom.equals("") || Addh.equals("") || Addr.equals("") || Clas.equals("") || BloodG.equals("")){
+        if( Name.equals("") || 
+                religion.equals("")||
+                caste.equals("") ||
+                date.isBefore(d1)  || 
+                Gen.equals("Select") ||
+                Prev_school.equals("")||
+                Prev_percent.equals("") ||
+                fPhone.equals("") ||
+                mPhone.equals("") ||
+                Dad.equals("") || 
+                f_Occu.equals("")||
+                m_Occu.equals("")||
+                Mom.equals("") || 
+                Addh.equals("") || 
+                PermAddr.equals("") ||
+                TempAddr.equals("") || 
+                Clas.equals("Select") || 
+                BloodG.equals("Select")){
             // Shows a error message
             JOptionPane.showMessageDialog(null,"Some informations are missing","Error",JOptionPane.ERROR_MESSAGE);
         }else{// IF all values are entered
@@ -283,17 +390,25 @@ public class Edit_Student_Form extends javax.swing.JFrame {
 
                     con = DriverManager.getConnection(DB_URL,User,Pass);
                     //Inserting into table
-                    ps = con.prepareStatement("update class_8 set Name = ?, Dob = ?, Gender = ?, Father = ?, Mother = ?, Phone = ?, Aadhar = ?, Address = ?, BloodGroup = ? where Name = ?");
+                    ps = con.prepareStatement("update class_8 set Name = ?, Religion = ?, Caste = ?, Dob = ?, Gender = ?, Aadhar = ?, BloodGroup = ?, FatherName = ?, FatherOccupation = ?, FatherNumber = ?, MotherName = ?, MotherOccupation = ?, MotherNumber = ?, PermanentAddress = ?, TemporaryAddress = ?, PreviousSchoolName = ?, Percentage = ? where Name = ?");
                     ps.setString(1, Name); //Name
-                    ps.setString(2, dob);// Date-of-Birth
-                    ps.setString(3, Gen);// Gender
-                    ps.setString(4, Dad);// Father's Name
-                    ps.setString(5, Mom);// Mother's Name
-                    ps.setString(6, Phone);// Parent's Phone Number
-                    ps.setString(7, Addh);// Aadhar Number
-                    ps.setString(8, Addr);// Address
-                    ps.setString(9, BloodG);// Blood Group
-                    ps.setString(10, Value2);// Selected Student
+                    ps.setString(2, religion);// Religion
+                    ps.setString(3, caste);// Caste
+                    ps.setString(4, dob);// Date-of-birth
+                    ps.setString(5, Gen);// Gender
+                    ps.setString(6, Addh);// Aadhar Number
+                    ps.setString(7, BloodG);// Blood Group
+                    ps.setString(8, Dad);// Father's Name
+                    ps.setString(9, f_Occu);// Father's Occupation
+                    ps.setString(10, fPhone);// Father's Number
+                    ps.setString(11, Mom);// Mother's Name
+                    ps.setString(12, m_Occu);// Mother's Occupation
+                    ps.setString(13, mPhone);// Mother's Number
+                    ps.setString(14, PermAddr);// Permanent Address
+                    ps.setString(15, TempAddr);// Temporary Address
+                    ps.setString(16, Prev_school);// Previous School Name
+                    ps.setString(17, Prev_percent);// Percentage
+                    ps.setString(18, Value2);
                     //Executing the statement
                     ps.executeUpdate(); // Update the table
                     JOptionPane.showMessageDialog(null,"Student successfully updated");
@@ -305,17 +420,26 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                 try {
                     con = DriverManager.getConnection(DB_URL,User,Pass);
                     //Inserting into table
-                    ps = con.prepareStatement("update class_8 set Name = ?, Dob = ?, Gender = ?, Father = ?, Mother = ?, Phone = ?, Aadhar = ?, Address = ?, BloodGroup = ? where Name = ?");
-                    ps.setString(1,Name); //Name
-                    ps.setString(2, dob);// Date-of-Birth
-                    ps.setString(3, Gen);// Gender
-                    ps.setString(4, Dad);// Father's Name
-                    ps.setString(5, Mom);// Mother's Name
-                    ps.setString(6, Phone);// Parent's Phone Number
-                    ps.setString(7, Addh);// Aadhar Number
-                    ps.setString(8, Addr);// Address
-                    ps.setString(9, BloodG);// Blood Group
-                    ps.setString(10, Value2);// Selected Student
+                    ps = con.prepareStatement("update class_8 set Name = ?, Religion = ?, Caste = ?, Dob = ?, Gender = ?, Aadhar = ?, BloodGroup = ?, FatherName = ?, FatherOccupation = ?, FatherNumber = ?, MotherName = ?, MotherOccupation = ?, MotherNumber = ?, PermanentAddress = ?, TemporaryAddress = ?, PreviousSchoolName = ?, Percentage = ? where Name = ?");
+                    ps.setString(1, Name); //Name
+                    ps.setString(2, religion);// Religion
+                    ps.setString(3, caste);// Caste
+                    ps.setString(4, dob);// Date-of-birth
+                    ps.setString(5, Gen);// Gender
+                    ps.setString(6, Addh);// Aadhar Number
+                    ps.setString(7, BloodG);// Blood Group
+                    ps.setString(8, Dad);// Father's Name
+                    ps.setString(9, f_Occu);// Father's Occupation
+                    ps.setString(10, fPhone);// Father's Number
+                    ps.setString(11, Mom);// Mother's Name
+                    ps.setString(12, m_Occu);// Mother's Occupation
+                    ps.setString(13, mPhone);// Mother's Number
+                    ps.setString(14, PermAddr);// Permanent Address
+                    ps.setString(15, TempAddr);// Temporary Address
+                    ps.setString(16, Prev_school);// Previous School Name
+                    ps.setString(17, Prev_percent);// Percentage
+                    ps.setString(18, Value2);
+                    //Executing the statement
                     //Executing the statement
                     ps.executeUpdate(); // Update the table
                     JOptionPane.showMessageDialog(null,"Student successfully updated");
@@ -327,17 +451,26 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                 try {
                     con = DriverManager.getConnection(DB_URL,User,Pass);
                     //Inserting into table
-                    ps = con.prepareStatement("update class_8 set Name = ?, Dob = ?, Gender = ?, Father = ?, Mother = ?, Phone = ?, Aadhar = ?, Address = ?, BloodGroup = ? where Name = ?");
-                    ps.setString(1,Name); //Name
-                    ps.setString(2, dob);// Date-of-Birth
-                    ps.setString(3, Gen);// Gender
-                    ps.setString(4, Dad);// Father's Name
-                    ps.setString(5, Mom);// Mother's Name
-                    ps.setString(6, Phone);// Parent's Phone Number
-                    ps.setString(7, Addh);// Aadhar Number
-                    ps.setString(8, Addr);// Address
-                    ps.setString(9, BloodG);// Blood Group
-                    ps.setString(10, Value2);// Selected Student
+                   ps = con.prepareStatement("update class_8 set Name = ?, Religion = ?, Caste = ?, Dob = ?, Gender = ?, Aadhar = ?, BloodGroup = ?, FatherName = ?, FatherOccupation = ?, FatherNumber = ?, MotherName = ?, MotherOccupation = ?, MotherNumber = ?, PermanentAddress = ?, TemporaryAddress = ?, PreviousSchoolName = ?, Percentage = ? where Name = ?");
+                    ps.setString(1, Name); //Name
+                    ps.setString(2, religion);// Religion
+                    ps.setString(3, caste);// Caste
+                    ps.setString(4, dob);// Date-of-birth
+                    ps.setString(5, Gen);// Gender
+                    ps.setString(6, Addh);// Aadhar Number
+                    ps.setString(7, BloodG);// Blood Group
+                    ps.setString(8, Dad);// Father's Name
+                    ps.setString(9, f_Occu);// Father's Occupation
+                    ps.setString(10, fPhone);// Father's Number
+                    ps.setString(11, Mom);// Mother's Name
+                    ps.setString(12, m_Occu);// Mother's Occupation
+                    ps.setString(13, mPhone);// Mother's Number
+                    ps.setString(14, PermAddr);// Permanent Address
+                    ps.setString(15, TempAddr);// Temporary Address
+                    ps.setString(16, Prev_school);// Previous School Name
+                    ps.setString(17, Prev_percent);// Percentage
+                    ps.setString(18, Value2);
+                    //Executing the statement
                     //Executing the statement
                     ps.executeUpdate(); // Update the table
                     JOptionPane.showMessageDialog(null,"Student successfully updated");
@@ -366,7 +499,8 @@ public class Edit_Student_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_BloodActionPerformed
 
     private void Class1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Class1ActionPerformed
-        String value1 = Class.getSelectedItem().toString();
+        String value1 = Class1.getSelectedItem().toString();
+      
         if(value1.equals("Class 8")){
             try {
                 con = DriverManager.getConnection(DB_URL,User,Pass);
@@ -379,6 +513,7 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                Class1.setSelectedIndex(0);
             }
         }
         if(value1.equals("Class 9")){
@@ -393,6 +528,7 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                Class1.setSelectedIndex(0);
             }
         }
         if(value1.equals("Class 10")){
@@ -406,17 +542,20 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     Student.addItem(name2);
                 }
             } catch (SQLException ex) {
+                ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+                Class1.setSelectedIndex(0);
             } }
     }//GEN-LAST:event_Class1ActionPerformed
 
     private void StudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentActionPerformed
         String Value2 = Student.getSelectedItem().toString();
-        String value1 = Class.getSelectedItem().toString();
+        String value1 = Class1.getSelectedItem().toString();
+
         try{
             con = DriverManager.getConnection(DB_URL,User,Pass);
             if(value1.equals("Class 8")){
-                ps = con.prepareStatement("select Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup from class_8 where Name=?");
+                ps = con.prepareStatement("select Name, Religion, Caste, Dob, Gender, Aadhar, BloodGroup, FatherName, FatherOccupation, FatherNumber, MotherName, MotherOccupation, MotherNumber, PermanentAddress, TemporaryAddress, PreviousSchoolName, Percentage from class_8 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
@@ -425,21 +564,55 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     F_Name.setText(newStr[0]);
                     M_Name.setText(newStr[1]);
                     L_Name.setText(newStr[2]);
-                    Class1.setSelectedItem(value1);
-                    Gender.setSelectedItem(rs.getString("Gender"));
-                    Father.setText(rs.getString("Father"));
-                    Mother.setText(rs.getString("Mother"));
-                    P_Phone.setText(rs.getString("Phone"));
-                    Addhar.setText(rs.getString("Aadhar"));
-                    Address.setText(rs.getString("Address"));
-                    Blood.setSelectedItem(rs.getString("BloodGroup"));
+                    
+                    Religion.setText(rs.getString("Religion"));
+                    Caste.setText(rs.getString("Caste"));
+                    
                     String str = rs.getString("Dob");
                     LocalDate dateTime = LocalDate.parse(str);
                     datePicker1.setDate(dateTime); 
+                    
+                    Class.setSelectedItem(value1);
+                    
+                    String value3 = rs.getString("Gender");
+                    
+                    if(value3.equals("Male") || value3.equals("Female")){
+                    Gender.setSelectedItem(rs.getString("Gender"));
+                    }else{
+                    Gender.setSelectedItem("Other");
+                    Gen_other.setEnabled(true);
+                    Gen_other.setText(rs.getString("Gender"));
+                    }
+                    
+                    
+                    
+                    Father.setText(rs.getString("FatherName"));
+                    F_Occu.setText(rs.getString("FatherOccupation"));
+                    FPhone.setText(rs.getString("FatherNumber"));
+                    
+                    Mother.setText(rs.getString("MotherName"));
+                    M_Occu.setText(rs.getString("MotherOccupation"));
+                    MPhone.setText(rs.getString("MotherNumber"));
+                    
+                    Addhar.setText(rs.getString("Aadhar"));
+                    
+                    String ad1 = rs.getString("PermanentAddress");
+                    String ad2 = rs.getString("TemporaryAddress");
+                    
+                    if (ad1.equals(ad2)){
+                    same.setSelected(true);
+                    }
+                    
+                    PermanentAdd.setText(rs.getString("PermanentAddress"));
+                    TemporaryAdd.setText(rs.getString("TemporaryAddress"));
+                    
+                    Blood.setSelectedItem(rs.getString("BloodGroup"));
+                    Prev_School.setText(rs.getString("PreviousSchoolName"));
+                    Prev_Percent.setText(rs.getString("Percentage"));
                 }
             }
             if(value1.equals("Class 9")){
-                ps = con.prepareStatement("select Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup from class_9 where Name=?");
+                ps = con.prepareStatement("select Name, Religion, Caste, Dob, Gender, Aadhar, BloodGroup, FatherName, FatherOccupation, FatherNumber, MotherName, MotherOccupation, MotherNumber, PermanentAddress, TemporaryAddress, PreviousSchoolName, Percentage from class_9 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
@@ -448,21 +621,47 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     F_Name.setText(newStr[0]);
                     M_Name.setText(newStr[1]);
                     L_Name.setText(newStr[2]);
+                    
+                    Religion.setText(rs.getString("Religion"));
+                    Caste.setText(rs.getString("Caste"));
+                    
                     String str = rs.getString("Dob");
                     LocalDate dateTime = LocalDate.parse(str);
                     datePicker1.setDate(dateTime); 
+                    
                     Class1.setSelectedItem(value1);
+                    
+                    String value3 = rs.getString("Gender");
+                    
+                    if(value3.equals("Male") || value3.equals("Female")){
                     Gender.setSelectedItem(rs.getString("Gender"));
-                    Father.setText(rs.getString("Father"));
-                    Mother.setText(rs.getString("Mother"));
-                    P_Phone.setText(rs.getString("Phone"));
+                    }else{
+                    Gender.setSelectedItem("Other");
+                    Gen_other.setEnabled(true);
+                    Gen_other.setText(rs.getString("Gender"));
+                    }
+                    
+                    
+                    
+                    Father.setText(rs.getString("FatherName"));
+                    F_Occu.setText(rs.getString("FatherOccupation"));
+                    FPhone.setText(rs.getString("FatherNumber"));
+                    
+                    Mother.setText(rs.getString("MotherName"));
+                    M_Occu.setText(rs.getString("MotherOccupation"));
+                    MPhone.setText(rs.getString("MotherNumber"));
+                    
                     Addhar.setText(rs.getString("Aadhar"));
-                    Address.setText(rs.getString("Address"));
+                    PermanentAdd.setText(rs.getString("PermanentAddress"));
+                    TemporaryAdd.setText(rs.getString("TemporaryAddress"));
+                    
                     Blood.setSelectedItem(rs.getString("BloodGroup"));
+                    Prev_School.setText(rs.getString("PreviousSchoolName"));
+                    Prev_Percent.setText(rs.getString("Percentage"));
                 }
             }
             if(value1.equals("Class 10")){
-                ps = con.prepareStatement("select Name, Dob, Gender, Father, Mother, Phone, Aadhar, Address, BloodGroup from class_10 where Name=?");
+                ps = con.prepareStatement("select Name, Religion, Caste, Dob, Gender, Aadhar, BloodGroup, FatherName, FatherOccupation, FatherNumber, MotherName, MotherOccupation, MotherNumber, PermanentAddress, TemporaryAddress, PreviousSchoolName, Percentage from class_10 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
@@ -471,24 +670,63 @@ public class Edit_Student_Form extends javax.swing.JFrame {
                     F_Name.setText(newStr[0]);
                     M_Name.setText(newStr[1]);
                     L_Name.setText(newStr[2]);
+                    
+                    Religion.setText(rs.getString("Religion"));
+                    Caste.setText(rs.getString("Caste"));
+                    
                     String str = rs.getString("Dob");
                     LocalDate dateTime = LocalDate.parse(str);
                     datePicker1.setDate(dateTime); 
+                    
                     Class1.setSelectedItem(value1);
+                    
+                    String value3 = rs.getString("Gender");
+                    
+                    if(value3.equals("Male") || value3.equals("Female")){
                     Gender.setSelectedItem(rs.getString("Gender"));
-                    Father.setText(rs.getString("Father"));
-                    Mother.setText(rs.getString("Mother"));
-                    P_Phone.setText(rs.getString("Phone"));
+                    }else{
+                    Gender.setSelectedItem("Other");
+                    Gen_other.setEnabled(true);
+                    Gen_other.setText(rs.getString("Gender"));
+                    }
+                    
+                    
+                    
+                    Father.setText(rs.getString("FatherName"));
+                    F_Occu.setText(rs.getString("FatherOccupation"));
+                    FPhone.setText(rs.getString("FatherNumber"));
+                    
+                    Mother.setText(rs.getString("MotherName"));
+                    M_Occu.setText(rs.getString("MotherOccupation"));
+                    MPhone.setText(rs.getString("MotherNumber"));
+                    
                     Addhar.setText(rs.getString("Aadhar"));
-                    Address.setText(rs.getString("Address"));
+                    PermanentAdd.setText(rs.getString("PermanentAddress"));
+                    TemporaryAdd.setText(rs.getString("TemporaryAddress"));
+                    
                     Blood.setSelectedItem(rs.getString("BloodGroup"));
+                    Prev_School.setText(rs.getString("PreviousSchoolName"));
+                    Prev_Percent.setText(rs.getString("Percentage"));
                 }
             }
-
+        
         }catch(SQLException ex){
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
+            Student.setSelectedIndex(0);
         }
+       
     }//GEN-LAST:event_StudentActionPerformed
+
+    private void sameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_sameItemStateChanged
+        if(same.isSelected()){
+        TemporaryAdd.setEnabled(false);
+        TemporaryAdd.setText(PermanentAdd.getText());
+        }else{
+        TemporaryAdd.setEnabled(true);
+        TemporaryAdd.setText("");
+        }
+    }//GEN-LAST:event_sameItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -506,20 +744,29 @@ public class Edit_Student_Form extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Addhar;
-    private javax.swing.JTextArea Address;
     private javax.swing.JComboBox<String> Blood;
+    private javax.swing.JTextField Caste;
     private javax.swing.JComboBox<String> Class;
     private javax.swing.JComboBox<String> Class1;
     private javax.swing.JButton Exit;
+    private javax.swing.JTextField FPhone;
     private javax.swing.JTextField F_Name;
+    private javax.swing.JTextField F_Occu;
     private javax.swing.JTextField Father;
+    private javax.swing.JTextField Gen_other;
     private javax.swing.JComboBox<String> Gender;
     private javax.swing.JTextField L_Name;
+    private javax.swing.JTextField MPhone;
     private javax.swing.JTextField M_Name;
+    private javax.swing.JTextField M_Occu;
     private javax.swing.JTextField Mother;
-    private javax.swing.JTextField P_Phone;
+    private javax.swing.JTextArea PermanentAdd;
+    private javax.swing.JTextField Prev_Percent;
+    private javax.swing.JTextField Prev_School;
+    private javax.swing.JTextField Religion;
     private javax.swing.JComboBox<String> Student;
     private javax.swing.JButton Submit;
+    private javax.swing.JTextArea TemporaryAdd;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -533,7 +780,14 @@ public class Edit_Student_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -543,7 +797,9 @@ public class Edit_Student_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JCheckBox same;
     // End of variables declaration//GEN-END:variables
 }
