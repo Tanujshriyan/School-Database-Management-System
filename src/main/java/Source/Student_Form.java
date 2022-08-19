@@ -168,8 +168,8 @@ public class Student_Form extends javax.swing.JFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 70, -1));
         jPanel1.add(Addhar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 223, 190, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Temporary Address");
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, 140, -1));
         jLabel11.getAccessibleContext().setAccessibleName("");
 
@@ -260,8 +260,8 @@ public class Student_Form extends javax.swing.JFrame {
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 109, 150, -1));
         jPanel1.add(Caste, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 190, -1));
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel22.setText("Permanent Address");
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 480, 140, -1));
 
         PermanentAdd.setColumns(20);
@@ -306,11 +306,12 @@ public class Student_Form extends javax.swing.JFrame {
         String religion = Religion.getText();
         String caste = Caste.getText();
         LocalDate date = datePicker1.getDate();
-        System.out.println(date);
         String Gen = (String) Gender.getSelectedItem();
         if(Gen.equals("Other")){
            Gen = Gen_other.getText();
         }
+        String comp_date = "2009-08-19 00:00:00";
+        LocalDate d1 = LocalDate.parse(comp_date);
         String Prev_school = Prev_School.getText();
         String Prev_percent = Prev_Percent.getText();
         String fPhone = FPhone.getText();
@@ -326,12 +327,10 @@ public class Student_Form extends javax.swing.JFrame {
         String BloodG = Blood.getSelectedItem().toString();
         Window a = new Window();
         // Checks if any value is empty
-        if(     F_Name.equals("") || 
-                M_Name.equals("") || 
-                L_Name.equals("") ||
+        if(     Name.equals("") || 
                 religion.equals("")||
                 caste.equals("") ||
-                date == null  || 
+                date.isBefore(d1)  || 
                 Gen.equals("Select") ||
                 Prev_school.equals("")||
                 Prev_percent.equals("") ||
