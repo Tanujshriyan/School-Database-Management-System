@@ -310,8 +310,8 @@ public class Student_Form extends javax.swing.JFrame {
         if(Gen.equals("Other")){
            Gen = Gen_other.getText();
         }
-        String comp_date = "2009-08-19 00:00:00";
-        LocalDate d1 = LocalDate.parse(comp_date);
+        //String comp_date = "2009-08-19";
+        //LocalDate d1 = LocalDate.parse(comp_date);
         String Prev_school = Prev_School.getText();
         String Prev_percent = Prev_Percent.getText();
         String fPhone = FPhone.getText();
@@ -326,11 +326,20 @@ public class Student_Form extends javax.swing.JFrame {
         String Clas = Class.getSelectedItem().toString();
         String BloodG = Blood.getSelectedItem().toString();
         Window a = new Window();
+        if(!validateAadhar(Addh)){
+        JOptionPane.showMessageDialog(null,"Invalid Aadhar Card Number","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!validateNumber(mPhone)){
+        JOptionPane.showMessageDialog(null,"Invalid Phone Number","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!validateNumber(fPhone)){
+        JOptionPane.showMessageDialog(null,"Invalid Phone Number","Error",JOptionPane.ERROR_MESSAGE);
+        }
         // Checks if any value is empty
-        if(     Name.equals("") || 
+        else if(     Name.equals("") || 
                 religion.equals("")||
                 caste.equals("") ||
-                date.isBefore(d1)  || 
+                //date.isBefore(d1)  || 
                 Gen.equals("Select") ||
                 Prev_school.equals("")||
                 Prev_percent.equals("") ||
@@ -355,7 +364,7 @@ public class Student_Form extends javax.swing.JFrame {
 
                     con = DriverManager.getConnection(DB_URL,User,Pass);
                     //Inserting into table
-                    ps = con.prepareStatement("insert into class_8(Name, Religion, Caste, Dob, Gender, Aadhar, BloodGroup, Father Name, Father Occupation, Father's Number, Mother Name, Mother Occupation, Mother's Number, Permanent Address, Temporary Address, Previous School Name, Percentage)" + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    ps = con.prepareStatement("insert into class_8(Name, Religion, Caste, Dob, Gender, Aadhar, BloodGroup, FatherName, FatherOccupation, FatherNumber, MotherName, MotherOccupation,MotherNumber, PermanentAddress, TemporaryAddress, PreviousSchoolName, Percentage)" + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                     ps.setString(1, Name); //Name
                     ps.setString(2, religion);// Religion
                     ps.setString(3, caste);// Caste
@@ -385,7 +394,7 @@ public class Student_Form extends javax.swing.JFrame {
                 try {
                     con = DriverManager.getConnection(DB_URL,User,Pass);
                     //Inserting into table
-                    ps = con.prepareStatement("insert into class_8(Name, Religion, Caste, Dob, Gender, Aadhar, BloodGroup, Father Name, Father Occupation, Father's Number, Mother Name, Mother Occupation, Mother's Number, Permanent Address, Temporary Address, Previous School Name, Percentage)" + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    ps = con.prepareStatement("insert into class_9(Name, Religion, Caste, Dob, Gender, Aadhar, BloodGroup, FatherName, FatherOccupation, FatherNumber, MotherName, MotherOccupation,MotherNumber, PermanentAddress, TemporaryAddress, PreviousSchoolName, Percentage)" + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");;
                     ps.setString(1, Name); //Name
                     ps.setString(2, religion);// Religion
                     ps.setString(3, caste);// Caste
@@ -415,7 +424,7 @@ public class Student_Form extends javax.swing.JFrame {
                 try {
                     con = DriverManager.getConnection(DB_URL,User,Pass);
                     //Inserting into table
-                   ps = con.prepareStatement("insert into class_8(Name, Religion, Caste, Dob, Gender, Aadhar, BloodGroup, Father Name, Father Occupation, Father's Number, Mother Name, Mother Occupation, Mother's Number, Permanent Address, Temporary Address, Previous School Name, Percentage)" + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                   ps = con.prepareStatement("insert into class_10(Name, Religion, Caste, Dob, Gender, Aadhar, BloodGroup, FatherName, FatherOccupation, FatherNumber, MotherName, MotherOccupation,MotherNumber, PermanentAddress, TemporaryAddress, PreviousSchoolName, Percentage)" + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                     ps.setString(1, Name); //Name
                     ps.setString(2, religion);// Religion
                     ps.setString(3, caste);// Caste
