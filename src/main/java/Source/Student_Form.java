@@ -305,13 +305,13 @@ public class Student_Form extends javax.swing.JFrame {
         String Name = F_Name.getText() +" "+M_Name.getText()+" "+L_Name.getText();
         String religion = Religion.getText();
         String caste = Caste.getText();
-        LocalDate date = datePicker1.getDate();
+        LocalDate dob_for = datePicker1.getDate();
         String Gen = (String) Gender.getSelectedItem();
         if(Gen.equals("Other")){
            Gen = Gen_other.getText();
         }
-        //String comp_date = "2009-08-19";
-        //LocalDate d1 = LocalDate.parse(comp_date);
+        String comp_date = "2009-08-19";
+        LocalDate d1 = LocalDate.parse(comp_date);
         String Prev_school = Prev_School.getText();
         String Prev_percent = Prev_Percent.getText();
         String fPhone = FPhone.getText();
@@ -335,11 +335,13 @@ public class Student_Form extends javax.swing.JFrame {
         else if(!validateNumber(fPhone)){
         JOptionPane.showMessageDialog(null,"Invalid Phone Number","Error",JOptionPane.ERROR_MESSAGE);
         }
+        else if(!dob_for.isBefore(d1)){
+        JOptionPane.showMessageDialog(null,"Age must be greater than 12","Error",JOptionPane.ERROR_MESSAGE);
+        }
         // Checks if any value is empty
-        else if(     Name.equals("") || 
+        else if(Name.equals("") || 
                 religion.equals("")||
                 caste.equals("") ||
-                //date.isBefore(d1)  || 
                 Gen.equals("Select") ||
                 Prev_school.equals("")||
                 Prev_percent.equals("") ||
@@ -357,7 +359,7 @@ public class Student_Form extends javax.swing.JFrame {
             // Shows a error message
             JOptionPane.showMessageDialog(null,"Some informations are missing","Error",JOptionPane.ERROR_MESSAGE);
         }else{// IF all values are entered
-            String dob = date.toString();
+            String dob = dob_for.toString();
             switch (Clas) {
                 case "Class 8":
                 try {
@@ -493,7 +495,7 @@ public class Student_Form extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_sameItemStateChanged
 
-        private boolean validateNumber(String Phone) {
+    private boolean validateNumber(String Phone) {
          //(0/91): number starts with (0/91)  
          //[7-9]: starting of the number may contain a digit between 0 to 9  
          //[0-9]: then contains digits 0 to 9  

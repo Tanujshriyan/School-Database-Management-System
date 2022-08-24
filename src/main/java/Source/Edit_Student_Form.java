@@ -14,6 +14,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /*
@@ -341,7 +343,7 @@ public class Edit_Student_Form extends javax.swing.JFrame {
         String Name = F_Name.getText() +" "+M_Name.getText()+" "+L_Name.getText();
         String religion = Religion.getText();
         String caste = Caste.getText();
-        LocalDate date = datePicker1.getDate();
+        LocalDate dob_for = datePicker1.getDate();
         String comp_date = "2009-08-19 00:00:00";
         LocalDate d1 = LocalDate.parse(comp_date);
         String Gen = Gender.getSelectedItem().toString();
@@ -361,16 +363,25 @@ public class Edit_Student_Form extends javax.swing.JFrame {
         String TempAddr = TemporaryAdd.getText();
         String Clas = Class.getSelectedItem().toString();
         String BloodG = Blood.getSelectedItem().toString();
+        if(!validateAadhar(Addh)){
+        JOptionPane.showMessageDialog(null,"Invalid Aadhar Card Number","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!validateNumber(mPhone)){
+        JOptionPane.showMessageDialog(null,"Invalid Phone Number","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!validateNumber(fPhone)){
+        JOptionPane.showMessageDialog(null,"Invalid Phone Number","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!dob_for.isBefore(d1)){
+        JOptionPane.showMessageDialog(null,"Age must be greater than 12","Error",JOptionPane.ERROR_MESSAGE);
+        }
         // Checks if any value is empty
-        if( Name.equals("") || 
+        else if( Name.equals("") || 
                 religion.equals("")||
                 caste.equals("") ||
-                date.isBefore(d1)  || 
                 Gen.equals("Select") ||
                 Prev_school.equals("")||
                 Prev_percent.equals("") ||
-                fPhone.equals("") ||
-                mPhone.equals("") ||
                 Dad.equals("") || 
                 f_Occu.equals("")||
                 m_Occu.equals("")||
@@ -383,7 +394,7 @@ public class Edit_Student_Form extends javax.swing.JFrame {
             // Shows a error message
             JOptionPane.showMessageDialog(null,"Some informations are missing","Error",JOptionPane.ERROR_MESSAGE);
         }else{// IF all values are entered
-            String dob = date.toString();
+            String dob = dob_for.toString();
             switch (Clas) {
                 case "Class 8":
                 try {
@@ -718,6 +729,36 @@ public class Edit_Student_Form extends javax.swing.JFrame {
        
     }//GEN-LAST:event_StudentActionPerformed
 
+        private boolean validateNumber(String Phone) {
+         //(0/91): number starts with (0/91)  
+         //[7-9]: starting of the number may contain a digit between 0 to 9  
+         //[0-9]: then contains digits 0 to 9  
+         Pattern ptrn = Pattern.compile("(0/91)?[7-9][0-9]{9}");  
+         //the matcher() method creates a matcher that will match the given input against this pattern  
+         Matcher match = ptrn.matcher(Phone);  
+        //returns a boolean value
+        return match.find() && match.group().equals(Phone);
+    }
+
+    private boolean validateAadhar(String Addh) {
+        // Regex to check valid Aadhaar number.
+        String regex
+            = "^[2-9]{1}[0-9]{3}\\s[0-9]{4}\\s[0-9]{4}$";
+ 
+        // Compile the ReGex
+        Pattern p = Pattern.compile(regex);
+ 
+ 
+        // Pattern class contains matcher() method
+        // to find matching between given string
+        // and regular expression.
+        Matcher m = p.matcher(Addh);
+ 
+        // Return if the string
+        // matched the ReGex
+        return m.matches();
+    }
+    
     private void sameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_sameItemStateChanged
         if(same.isSelected()){
         TemporaryAdd.setEnabled(false);
