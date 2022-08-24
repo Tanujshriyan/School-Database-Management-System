@@ -55,20 +55,10 @@ public class Window extends javax.swing.JFrame {
      */
     public Window() {
         initComponents();
-        if(timeOfDay >= 0 && timeOfDay < 12){
-            Time.setText("Good Morning");     
-        }else if(timeOfDay >= 12 && timeOfDay < 16){
-            Time.setText("Good Afternoon");   
-        }else if(timeOfDay >= 16 && timeOfDay < 21){
-            Time.setText("Good Evening");
-        }else if(timeOfDay >= 21 && timeOfDay < 24){
-            Time.setText("Good Night");
-        }
             Students.setVisible(false);
             Fees.setVisible(false);
             ID.setVisible(false);
             Home.setVisible(true);
-            //Delete_B.setEnabled(false);
             SideBar.setEnabled(false);
             SideBar.setVisible(false);
     }
@@ -212,6 +202,7 @@ public class Window extends javax.swing.JFrame {
         Home_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Logout_Home_Panel.setBackground(new java.awt.Color(207, 39, 35));
+        Logout_Home_Panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Logout_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Logout_Home_PanelMouseClicked(evt);
@@ -233,6 +224,7 @@ public class Window extends javax.swing.JFrame {
         Home_Panel.add(Logout_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 140, 50));
 
         Fees_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
+        Fees_Home_Panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Fees_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Fees_Home_PanelMouseClicked(evt);
@@ -254,6 +246,7 @@ public class Window extends javax.swing.JFrame {
         Home_Panel.add(Fees_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 140, 50));
 
         ID_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
+        ID_Home_Panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ID_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ID_Home_PanelMouseClicked(evt);
@@ -275,6 +268,7 @@ public class Window extends javax.swing.JFrame {
         Home_Panel.add(ID_Home_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 140, 50));
 
         Student_Home_Panel.setBackground(new java.awt.Color(255, 102, 51));
+        Student_Home_Panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Student_Home_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Student_Home_PanelMouseClicked(evt);
@@ -322,6 +316,7 @@ public class Window extends javax.swing.JFrame {
 
         Stud_table.setAutoCreateRowSorter(true);
         Stud_table.setBackground(new java.awt.Color(204, 204, 204));
+        Stud_table.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         Stud_table.setForeground(new java.awt.Color(0, 0, 0));
         Stud_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -374,7 +369,7 @@ public class Window extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Icons/identification_documents_40px.png"))); // NOI18N
         jLabel19.setText("Student List");
-        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 4, -1, -1));
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 2, -1, -1));
 
         Students.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 40));
         Students.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 680, 110));
@@ -917,8 +912,11 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshActionPerformed
-         String value = class_list.getSelectedItem().toString();
-          System.out.println(value);
+       String value = class_list.getSelectedItem().toString();
+        if(value.equals("Select the Class")){
+        class_list.setSelectedIndex(1);
+        Refresh();
+        }
           if("Class 8".equals(value)){
              try(Connection con = DriverManager.getConnection(DB_URL,User,Pass)){
                     Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
@@ -975,7 +973,7 @@ public class Window extends javax.swing.JFrame {
                     String name2 = rs.getString("Name");
                     Student.addItem(name2);
                     }
-           } catch (SQLException ex) {
+            } catch (SQLException ex) {
                JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
                Class.setSelectedIndex(0);
            } 
@@ -989,7 +987,7 @@ public class Window extends javax.swing.JFrame {
                     String name2 = rs.getString("Name");
                     Student.addItem(name2);
                     }
-           } catch (SQLException ex) {
+            } catch (SQLException ex) {
                JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
                Class.setSelectedIndex(0);
            }           
@@ -1003,10 +1001,10 @@ public class Window extends javax.swing.JFrame {
                     String name2 = rs.getString("Name");
                     Student.addItem(name2);
                     }
-           } catch (SQLException ex) {
+            } catch (SQLException ex) {
                JOptionPane.showMessageDialog(null,"Couldn't retrieve the data! Check the connection and try again!","Error",JOptionPane.ERROR_MESSAGE);
                Class.setSelectedIndex(0);
-           } }
+        } }
     }//GEN-LAST:event_ClassActionPerformed
 
     private void StudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentActionPerformed
@@ -1165,7 +1163,7 @@ public class Window extends javax.swing.JFrame {
             }
             }
             if(value1.equals("Class 9")){
-                ps = con.prepareStatement("select Caste,FatherName,MotherName from class_8 where Name=?");
+                ps = con.prepareStatement("select Caste,FatherName,MotherName from class_9 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
@@ -1189,7 +1187,7 @@ public class Window extends javax.swing.JFrame {
                 }
             }
             if(value1.equals("Class 10")){
-                ps = con.prepareStatement("select Caste,FatherName,MotherName from class_8 where Name=?");
+                ps = con.prepareStatement("select Caste,FatherName,MotherName from class_10 where Name=?");
                 ps.setString(1, Value2);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){

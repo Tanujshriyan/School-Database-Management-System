@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 /**
  *  @author Tanuj & Shravan
@@ -161,11 +162,14 @@ public class Register_Page extends javax.swing.JFrame {
         String password = Upass.getText();
         String cpassword = Ucpass.getText();
         // Checks if all the fields are entered
-        if(Email.equals("") || name.equals("") || password.equals("") || cpassword.equals("")){
+        if(name.equals("") || password.equals("") || cpassword.equals("")){
             JOptionPane.showMessageDialog(null,"Some informations are missing","Error",JOptionPane.ERROR_MESSAGE);  
         }    
-        else{
-               if(password.equals(cpassword)){ //Checks if password and confirm password are same
+        else{   
+            if(!isValid(Email)){
+                JOptionPane.showMessageDialog(null,"Invalid E-Mail","Error",JOptionPane.ERROR_MESSAGE);  
+            }
+            else if(password.equals(cpassword)){ //Checks if password and confirm password are same
                        try{
                            String SB = cryptWithMD5(password);
                         con = DriverManager.getConnection(DB_URL,User,Pass);
@@ -211,9 +215,18 @@ public class Register_Page extends javax.swing.JFrame {
         Logger.getLogger(Login_Page.class.getName()).log(Level.SEVERE, null, ex);
     }
         return null;
-
-
    }
+    
+    public static boolean isValid(String email){  
+        String emailFormate ="^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\."  
+                + "[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";  
+          
+        Pattern p = Pattern.compile(emailFormate);  
+        if(email == null){  
+        return false;  
+        }   
+        return p.matcher(email).matches();  
+    }  
     
     /**
      * @param args the command line arguments

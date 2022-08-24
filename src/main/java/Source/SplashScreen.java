@@ -93,7 +93,6 @@ public class SplashScreen extends javax.swing.JFrame {
                }
                if(i==20){
                    sp.LoadingText.setText("Connecting Database");
-             
                }
                if(i==50){
                    sp.LoadingText.setText("Building GUI");
